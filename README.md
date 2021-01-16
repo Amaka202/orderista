@@ -1,3 +1,9 @@
+# orderista
+
+Orderista is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat.
+
+Build with React, Redux, firebase firestore, React Suite
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +74,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# orderista
