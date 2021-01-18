@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.signup-container .signup-title p{
+    text-align: end;
+    font-size: 0.8em;
+}
+
 .signup-form-div{
     margin: auto;
     display: flex;
@@ -25,12 +30,21 @@
     margin-bottom: 10rem;
 }
 
+.signup-form-div form .form-control{
+    margin-bottom: 1rem;
+}
+
+.signup-form-div form .form-control p{
+    font-size: 0.9em;
+    color: red;
+    font-style: italic;
+}
+
 .signup-form-div form input{
     background-color: rgb(248, 245, 238);
     border-radius: 5px;
     border: none;
     padding: 10px;
-    margin-bottom: 1rem;
 }
 
 .signup-btn-div{

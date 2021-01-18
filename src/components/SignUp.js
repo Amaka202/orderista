@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles/signup.css'
 import { useForm } from "react-hook-form";
-import goneShopping from './images/goneShopping.png'
 import { Button } from 'rsuite';
 import { Link } from "react-router-dom";
 import 'rsuite/dist/styles/rsuite-default.css';
@@ -14,7 +13,12 @@ function SignUp() {
 
     return (
         <div className="signup-container">
+                <div>
+                    <p style={{textAlign:"end"}}>Already have an Account?
+                        <Link to="/login" style={{color: '#ED5358', textDecoration: 'none'}}> login</Link>
+                    </p>
                     <h3>Sign Up</h3>
+                </div>    
                 <div className="signup-form-div">
                     <form >
                         <div className="form-control">
@@ -24,9 +28,7 @@ function SignUp() {
                                 defaultValue="" 
                                 ref={register ({required: true}) } 
                             />
-                            <div>
                             {errors.firstName && <p>This field is required</p>}
-                            </div>
                         </div>
                         <div className="form-control">
                             <label>Last Name</label>
@@ -34,9 +36,7 @@ function SignUp() {
                                 name="lastName" 
                                 defaultValue="" 
                                 ref={register ({required: true}) }                    />
-                            <div>
                             {errors.lastName && <p>This field is required</p>}
-                            </div>
                         </div>
                         <div className="form-control">
                             <label>Email</label>
@@ -44,9 +44,15 @@ function SignUp() {
                                 name="email" 
                                 defaultValue="" 
                                 ref={register ({required: true}) }                    />
-                            <div>
                             {errors.email && <p>This field is required</p>}
-                            </div>
+                        </div>
+                        <div className="form-control">
+                            <label>Password</label>
+                            <input 
+                                name="password" 
+                                defaultValue="" 
+                                ref={register ({required: true}) }                    />
+                            {errors.password && <p>This field is required</p>}
                         </div>
                         <div className="form-control">
                             <label>Gender</label>
@@ -54,9 +60,7 @@ function SignUp() {
                                 name="gender" 
                                 defaultValue="" 
                                 ref={register ({required: true}) }                    />
-                            <div>
                             {errors.gender && <p>This field is required</p>}
-                            </div>
                         </div>
                         <div className="signup-btn-div">
                             <Button size="lg" onClick={handleSubmit(onSubmit)} className="btn"> Submit</Button>
