@@ -1,5 +1,6 @@
 import React from 'react'
-import './home.css';
+import './styles/home.css';
+import { Link } from "react-router-dom";
 import { Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import deliveryBike from './images/deliveryBike.png'
@@ -23,7 +24,9 @@ function home() {
                 </div>
             </div>
             <div className="btn-div">
-                <Button size="lg" color="#ED5358">Get Started</Button>
+                <Button size="lg" color="#ED5358">
+                    <Link to="/register" style={{color: 'white', textDecoration: 'none'}}>Get Started</Link>
+                </Button>
             </div>
         </div>
     )
