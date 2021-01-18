@@ -1,0 +1,43 @@
+.signup-container{
+    padding: 5%;
+}
+
+.signup-container h3{
+    text-align: center;
+}
+
+.signup-form-div{
+    margin: auto;
+    display: flex;
+}
+
+.signup-form-div form{
+    width: 30em;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.signup-form-div form input, label{
+    width: 100%;
+}
+
+.signup-form-div form label{
+    margin-bottom: 10rem;
+}
+
+.signup-form-div form input{
+    background-color: rgb(248, 245, 238);
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+.signup-btn-div{
+    text-align: center;
+}
+
+.signup-btn-div .btn{
+    background-color:  #ED5358;
+    color: white;
+}

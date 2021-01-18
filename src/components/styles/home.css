@@ -50,7 +50,7 @@
     background-color: #ED5358;
     color: white;
     font-weight: 600;
-    width: 30rem;
+    width: 20rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -64,11 +64,11 @@
         width: 100%;
     }
     .home-caption h1{
-        font-size: 3em;
+        font-size: 3em !important;
     }
 
     .home-caption p{
-        font-size: 1.5em;
+        font-size: 1.5em !important;
     }
     
     .home-img-div{

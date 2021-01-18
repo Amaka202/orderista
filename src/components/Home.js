@@ -24,7 +24,7 @@ function home() {
                 </div>
             </div>
             <div className="btn-div">
-                <Button size="lg" color="#ED5358">
+                <Button size="lg" color="">
                     <Link to="/register" style={{color: 'white', textDecoration: 'none'}}>Get Started</Link>
                 </Button>
             </div>
