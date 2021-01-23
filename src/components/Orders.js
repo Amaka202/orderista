@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from './Logo'
 import SideBar from './SideBar'
 import './styles/order.css'
+import goneShopping from './images/goneShopping.png'
 
 function Orders() {
     return (
@@ -10,6 +11,9 @@ function Orders() {
             <div className="order-container">
                 <Logo />
                 <div className="order-div">
+                    <div>
+                        <img src={goneShopping} alt="delivery bike"/>
+                    </div>
                 <p>My Order</p>
                 <ul>
                     <li>
