@@ -21,10 +21,10 @@ function SideBar() {
                         <Link to="/contact" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Contact Us</Link>
                     </Nav.Item>
                     <Nav.Item eventKey="4">
-                        <Link to="/register" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>My Orders</Link>
+                        <Link to="/orders" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>My Orders</Link>
                     </Nav.Item>
                     <Nav.Item eventKey="5">
-                        <Link to="/register" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Get Started</Link>
+                        <Link to="/register" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Sign Out</Link>
                     </Nav.Item>
                     </Nav>
                 </Sidenav.Body>

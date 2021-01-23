@@ -8,6 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import Menu from './components/Menu';
+import Orders from './components/Orders';
 
 export default function App() {
   return (
@@ -24,6 +25,9 @@ export default function App() {
         </Route>
         <Route path="/menu">
           <Menu />
+        </Route>
+        <Route path="/orders">
+          <Orders />
         </Route>
       </Switch>
     </div>
