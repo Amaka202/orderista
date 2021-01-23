@@ -1,0 +1,15 @@
+.sidebar-container{
+    width: 250px;
+    max-height: 100vh;
+    background-color: #ED5358;
+}
+
+.sidebar{
+    font-size: 2rem;
+    height: 100vh;
+    background-color: #ED5358;
+}
+
+.nav{
+    padding-top: 2rem;
+}

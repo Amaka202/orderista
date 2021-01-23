@@ -23,4 +23,16 @@
       background-color: #ED5358;
   }
 
+  @media only screen and (max-width: 600px){
+    .logo{
+        font-size: 1.2rem;
+    }
+
+    .header1-div button{
+        font-size: 1em;
+        padding: 7px;
+        background-color: #ED5358;
+    }
+}
+
   
