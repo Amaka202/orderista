@@ -7,6 +7,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Menu from './components/Menu';
 
 export default function App() {
   return (
@@ -18,8 +19,11 @@ export default function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home />      
+        </Route>
+        <Route path="/menu">
+          <Menu />
         </Route>
       </Switch>
     </div>

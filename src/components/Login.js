@@ -1,8 +1,9 @@
 import React from 'react';
+import './styles/login.css'
 import './styles/signup.css'
+import Header2 from './Header2';
 import { useForm } from "react-hook-form";
 import { Button } from 'rsuite';
-import { Link } from "react-router-dom";
 import 'rsuite/dist/styles/rsuite-default.css';
 
 
@@ -12,11 +13,10 @@ function Login() {
     const onSubmit = data => console.log(data);
 
     return (
-        <div className="signup-container">
+        <div className="login-bg">
+            <Header2 />
+            <div className="signup-container">
                 <div className="login-title">
-                    <span>Don't have an Account?
-                        <Link to="/register" style={{color: '#ED5358', textDecoration: 'none'}}> Sign Up</Link>
-                    </span>
                     <h3>Login</h3>
                 </div>    
                 <div className="signup-form-div">
@@ -44,6 +44,7 @@ function Login() {
                         </div>
                     </form>
                 </div>
+        </div>
         </div>
     )
 }
