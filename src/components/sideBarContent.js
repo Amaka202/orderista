@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import './styles/sidebar.css';
 
 
-function SideBar() {
+function sideBar() {
     return (
         <div>
             <div className="sidebar-container">
-                <Sidenav defaultOpenKeys={['3', '4']} activeKey="any" className="sidebar">
-                <Sidenav.Body>
-                    <Nav  className="nav" >
-                    <Nav.Item eventKey="1">
+                    <Nav  className="nav" vertical>
+                    <Nav.Item eventKey="1" >
                         <Link to="/menu" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Menu</Link>
                     </Nav.Item>
                     <Nav.Item eventKey="2">
@@ -27,11 +25,9 @@ function SideBar() {
                         <Link to="/register" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Sign Out</Link>
                     </Nav.Item>
                     </Nav>
-                </Sidenav.Body>
-                </Sidenav>
             </div>
         </div>
     )
 }
 
-export default SideBar
+export default sideBar;

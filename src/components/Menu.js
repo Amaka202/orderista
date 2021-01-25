@@ -1,19 +1,52 @@
-import React from 'react'
-import './styles/menu.css'
-import { Divider, Button } from 'rsuite';
+import React, {useState} from 'react'
+import './styles/menu.css';
+import './styles/sidebar.css';
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
-import SideBar from './SideBar';
 import Logo from './Logo';
 
-
+import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
+import sideBarContent from './sideBarContent'
+import currentWindowWidth from './getCurrentWindowWidth';
 
 function Menu() {
+    console.log(currentWindowWidth()[0]);
+    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
+
     return (
-        <div className="flexed-div">
-            <SideBar />
-            <div className="menu-container">
-            <Logo />
+        <Container>
+            
+
+            {currentWindowWidth()[0] > 700 
+                ?
+                <Sidebar className="sidebar">
+                    {sideBarContent()}
+                </Sidebar>
+                :
+                <>
+                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
+
+                <Drawer
+                    size={'xs'}
+                    placement={'left'}
+                    show={openMobileDrawer}
+                    className="drawer"
+                    onHide={() => setOpenMobileDrawer(false)}>
+                     <Drawer.Body className="drawer-body">
+                        {sideBarContent()}     
+                    </Drawer.Body> 
+                    <Drawer.Footer className="menu-btn">
+                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
+                    </Drawer.Footer>  
+                </Drawer>
+                </>
+            }
+            
+            <Container>
+                <Header></Header>
+                <Content>
+                <div className="menu-container">
+                <Logo />
                 <div>
                 <div className="menu-title">
                     <h3>Choose what you</h3>
@@ -150,7 +183,10 @@ function Menu() {
                 </div>
             </div>
             </div>
-        </div>
+                </Content>
+                <Footer></Footer>
+            </Container>
+        </Container>
     )
 }
 

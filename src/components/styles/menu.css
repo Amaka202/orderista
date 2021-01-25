@@ -11,8 +11,8 @@ body{
 }
 
 .menu-container{
-    width: 75%;
-    padding: 2%;
+    width: 100%;
+    padding: 3% 5%;
 }
 
 .menu-title{
@@ -51,21 +51,21 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
-    align-content: space-between;
+    justify-content: space-around;
+    align-content: space-around;
     padding: 3%;
-    width: 25rem;
+    width: 22rem;
     height: 12rem;
     margin-bottom: 1rem;
 }
 
 .menu-item .food-pic{
     margin-right: 1rem;
-    width: 45%;
+    width: 40%;
 }
 
 .menu-item .menu-name{
-    width: 65%;
+    width: 60%;
 }
 
 .menu-name p:first-child{
@@ -75,6 +75,16 @@ body{
 
 .menu-name p:nth-child(2){
     color: #C9CAD5;
+}
+
+.burger-icon{
+    /* margin-bottom: 1rem; */
+    background-color: white;
+    color: #ED5358;
+}
+.rs-drawer-content{
+    background-color: #ED5358;
+    width: 250px;
 }
 
 .price-div{

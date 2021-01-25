@@ -1,13 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Logo from './Logo'
-import SideBar from './SideBar'
+import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
+import SideBar from './SideBar';
+import sideBarContent from './sideBarContent'
+import currentWindowWidth from './getCurrentWindowWidth';
 import './styles/order.css'
 import goneShopping from './images/goneShopping.png'
 
 function Orders() {
+    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
     return (
-        <div className="orders-flexed">
-            <SideBar />
+        <Container>
+            {currentWindowWidth()[0] > 700 
+                ?
+                <Sidebar className="sidebar">
+                    {sideBarContent()}
+                </Sidebar>
+                :
+                <>
+                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
+
+                <Drawer
+                    size={'xs'}
+                    placement={'left'}
+                    show={openMobileDrawer}
+                    className="drawer"
+                    onHide={() => setOpenMobileDrawer(false)}>
+                     <Drawer.Body className="drawer-body">
+                        {sideBarContent()}     
+                    </Drawer.Body> 
+                    <Drawer.Footer className="menu-btn">
+                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
+                    </Drawer.Footer>  
+                </Drawer>
+                </>
+            }
+            <Container>
             <div className="order-container">
                 <Logo />
                 <div className="order-div">
@@ -42,7 +70,8 @@ function Orders() {
                 <p>Order recieved, we will be intouch in less than 1 hour</p>
                 </div>
             </div>
-        </div>
+            </Container>
+        </Container>
     )
 }
 

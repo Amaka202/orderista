@@ -3,11 +3,11 @@
 }
 
 .order-container{
-    padding: 3%;
+    padding: 3% 5%;
 }
 
 .order-div{
-    text-align: center;
+    /* text-align: center; */
 }
 
 .order-div img{

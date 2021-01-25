@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Menu from './components/Menu';
 import Orders from './components/Orders';
+import AddMenu from './components/AddMenu';
 
 export default function App() {
   return (
@@ -23,11 +24,14 @@ export default function App() {
         <Route exact path="/">
           <Home />      
         </Route>
-        <Route path="/menu">
+        <Route exact path="/menu">
           <Menu />
         </Route>
         <Route path="/orders">
           <Orders />
+        </Route>
+        <Route path="/addmenu">
+          <AddMenu />
         </Route>
       </Switch>
     </div>
