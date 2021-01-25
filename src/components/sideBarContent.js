@@ -1,5 +1,4 @@
 import React from 'react'
-import { Sidenav, Nav } from 'rsuite';
 import { Link } from "react-router-dom";
 import './styles/sidebar.css';
 

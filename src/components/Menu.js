@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
 import Logo from './Logo';
 
-import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
+import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 

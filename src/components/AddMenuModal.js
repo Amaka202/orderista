@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button, Uploader} from 'rsuite';
+import { Modal, Button} from 'rsuite';
 import { useForm } from "react-hook-form";
 import './styles/addmenu.css'
 

@@ -2,7 +2,6 @@ import React from 'react';
 import './styles/signup.css'
 import { useForm } from "react-hook-form";
 import { Button } from 'rsuite';
-import { Link } from "react-router-dom";
 import 'rsuite/dist/styles/rsuite-default.css';
 import Header1 from './Header1';
 
