@@ -1,0 +1,27 @@
+.modal-form{
+    
+    margin: 0 auto;
+}
+
+.modal-form .form-control{
+    margin-bottom: 1rem;
+
+}
+
+.modal-form label{
+   display: block;
+   font-weight: bold;
+}
+
+.modal-form input, textarea{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: rgb(241, 247, 241);
+}
+
+.modal-form .error-text{
+    font-size: 0.9em;
+    color: red;
+    font-style: italic;
+}

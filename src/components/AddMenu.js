@@ -1,30 +1,61 @@
 import React, {useState} from 'react'
-import AddMenuModal from './AddMenuModal';
-// import './styles/addmenu.css'
-import { Divider, Button } from 'rsuite';
+import './styles/menu.css';
+import './styles/sidebar.css';
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
-import SideBar from './SideBar';
 import Logo from './Logo';
 
+import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
+import sideBarContent from './sideBarContent'
+import currentWindowWidth from './getCurrentWindowWidth';
+import AddMenuModal from './AddMenuModal';
 
+function Menu() {
+    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
+    const [show, setShow] = useState(false);
 
-function AddMenu() {
-    const {isOpen, setIsOpen} = useState(false)
-
-    const open = () => {
-        setIsOpen(true)
+    const showModal = () => {
+        setShow(true)
     }
 
-    const close = () => {
-        setIsOpen(false)
+    const hideModal = () => {
+        setShow(false)
     }
 
     return (
-        <div className="flexed-div">
-            <SideBar />
-            <div className="menu-container">
-            <Logo />
+        <Container>
+            
+
+            {currentWindowWidth()[0] > 700 
+                ?
+                <Sidebar className="sidebar">
+                    {sideBarContent()}
+                </Sidebar>
+                :
+                <>
+                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
+
+                <Drawer
+                    size={'xs'}
+                    placement={'left'}
+                    show={openMobileDrawer}
+                    className="drawer"
+                    onHide={() => setOpenMobileDrawer(false)}>
+                     <Drawer.Body className="drawer-body">
+                        {sideBarContent()}     
+                    </Drawer.Body> 
+                    <Drawer.Footer className="menu-btn">
+                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
+                    </Drawer.Footer>  
+                </Drawer>
+                </>
+            }
+            
+            <Container>
+                <Header></Header>
+                <Content>
+                <div className="menu-container">
+                <Logo />
                 <div>
                 <div className="menu-title">
                     <h3>Choose what you</h3>
@@ -43,7 +74,10 @@ function AddMenu() {
                             <p>loremt is a long established fact that a reader will</p>
                             <div className="price-div">
                                 <p>₦2000</p>
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -57,7 +91,10 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -71,7 +108,10 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -85,7 +125,10 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                               
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -99,7 +142,10 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -113,7 +159,10 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -127,23 +176,30 @@ function AddMenu() {
                             <div className="price-div">
                                 <p>₦2000</p>
                                 {/* <Divider vertical /> */}
-                                
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <Divider />
+                <AddMenuModal show={show} handleClose={hideModal}>
+                    <p>Modal</p>
+                </AddMenuModal>
                 <div className="menu-btn">
-                    <Button size="lg" color="" onClick={open}>
-                        <Link to="/orders" style={{color: 'white', textDecoration: 'none'}}>Add Menu</Link>
+                    <Button size="lg" color="" onClick={showModal} style={{color: 'white'}}>
+                        Add Menu
                     </Button>
                 </div>
-                <AddMenuModal isOpen={open ? close : open}/>
             </div>
             </div>
-        </div>
+                </Content>
+                <Footer></Footer>
+            </Container>
+        </Container>
     )
 }
 
-export default AddMenu;
-
+export default Menu

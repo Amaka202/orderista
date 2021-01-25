@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Logo from './Logo'
-import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
-import SideBar from './SideBar';
+import { Container, Sidebar, Button, Drawer, IconButton, Icon, FlexboxGrid} from 'rsuite';
 import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 import './styles/order.css'
