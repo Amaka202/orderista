@@ -45,7 +45,7 @@
     margin-top: 1rem;
 }
 
-.signup-form-div form input, label{
+.signup-form-div form input, label, select{
     width: 100%;
 }
 
@@ -63,7 +63,7 @@
     font-style: italic;
 }
 
-.signup-form-div form input{
+.signup-form-div form input, select{
     background-color: white;
     border-radius: 5px;
     border: 1px solid gray;

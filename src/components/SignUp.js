@@ -68,7 +68,7 @@ function SignUp() {
                             <input 
                                 name="lastName" 
                                 defaultValue="" 
-                                ref={register ({required: true}) }                    />
+                                ref={register ({required: true}) }  />
                             {errors.lastName && <p>This field is required</p>}
                         </div>
                         <div className="form-control">
@@ -76,23 +76,25 @@ function SignUp() {
                             <input 
                                 name="email" 
                                 defaultValue="" 
-                                ref={register ({required: true}) }                    />
+                                ref={register ({required: true}) }/>
                             {errors.email && <p>This field is required</p>}
                         </div>
                         <div className="form-control">
                             <label>Password</label>
                             <input 
                                 name="password" 
+                                type="password" 
                                 defaultValue="" 
-                                ref={register ({required: true}) }                    />
+                                ref={register ({required: true}) }/>
                             {errors.password && <p>This field is required</p>}
                         </div>
                         <div className="form-control">
                             <label>Gender</label>
-                            <input 
-                                name="gender" 
-                                defaultValue="" 
-                                ref={register ({required: true}) }                    />
+                            <select ref={register} name="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
                             {errors.gender && <p>This field is required</p>}
                         </div>
                         <div className="signup-btn-div">

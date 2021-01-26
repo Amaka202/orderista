@@ -30,7 +30,7 @@ function Login() {
                 })
           }
           catch(e){
-            Alert.error(e.message === 'There is no user record corresponding to this identifier. The user may have been deleted.' && 'Wrong user name or password', 5000)
+            Alert.error(e.message === 'There is no user record corresponding to this identifier. The user may have been deleted.' && 'Wrong email or password', 5000)
             console.log('Error Signing up with email and password', e);
             setLoading(false)
         }
@@ -57,7 +57,8 @@ function Login() {
                         <div className="form-control">
                             <label>Password</label>
                             <input 
-                                name="password" 
+                                name="password"
+                                type="password"
                                 defaultValue="" 
                                 ref={register ({required: true}) }                    />
                             {errors.password && <p>This field is required</p>}
