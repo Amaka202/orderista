@@ -41,7 +41,7 @@ function Menu() {
                     className="drawer"
                     onHide={() => setOpenMobileDrawer(false)}>
                      <Drawer.Body className="drawer-body">
-                        {sideBarContent()}     
+                     {sideBarContent()}     
                     </Drawer.Body> 
                     <Drawer.Footer className="menu-btn">
                         <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>

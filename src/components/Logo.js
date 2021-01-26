@@ -8,7 +8,7 @@ function Logo() {
     const element = <FontAwesomeIcon icon={faTruck} />
     return (
         <div className="logo">
-        <Link to="/home" style={{color: 'white', textDecoration: 'none'}}>
+        <Link to="/" style={{color: 'white', textDecoration: 'none'}}>
             {element}
             <span>Orderister!</span>
         </Link>

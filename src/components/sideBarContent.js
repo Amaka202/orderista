@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import {Nav} from 'rsuite'
+import {Nav, Button} from 'rsuite';
+import {auth, db} from "../firebase";
+
+
 import './styles/sidebar.css';
 
 
-function sideBar() {
+function sideBarContent() {
+
     return (
         <div>
             <div className="sidebar-container">
@@ -25,9 +29,11 @@ function sideBar() {
                         <Link to="/register" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Sign Out</Link>
                     </Nav.Item>
                     </Nav>
+                    {/* <Button style={{ width: '100%', color:'white', backgroundColor: 'darkgreen' }} onClick = {signOut()}>Sign Out</Button> */}
+
             </div>
         </div>
     )
 }
 
-export default sideBar;
+export default sideBarContent;

@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import {ProtectedRoute} from './components/ProtectedRoute'
 import {
   Switch,
   Route,
@@ -15,24 +16,12 @@ export default function App() {
   return (
     <div>
       <Switch>
-        <Route path="/register">
-          <SignUp />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/">
-          <Home />      
-        </Route>
-        <Route exact path="/menu">
-          <Menu />
-        </Route>
-        <Route path="/orders">
-          <Orders />
-        </Route>
-        <Route path="/addmenu">
-          <AddMenu />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/register" component={SignUp} />
+        <Route path="/login" component={Login} />
+        <ProtectedRoute exact path="/menu" component={Menu} />
+        <ProtectedRoute path="/orders" component={Orders} />
+        <ProtectedRoute path="/addmenu" component={AddMenu} />
       </Switch>
     </div>
   )

@@ -1,15 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { auth, db } from "../firebase";
 import './styles/signup.css'
+import {useHistory} from "react-router-dom"
 import { useForm } from "react-hook-form";
-import { Button } from 'rsuite';
+import { Button, Alert } from 'rsuite';
+// import { generateUserDocument} from '../firebase'
 import 'rsuite/dist/styles/rsuite-default.css';
 import Header1 from './Header1';
 
 
 function SignUp() {
     const { register, handleSubmit, errors } = useForm();
-    
-    const onSubmit = data => console.log(data);
+    const [loading, setLoading] = useState(false);
+    const history = useHistory('');
+
+    const onSubmit = async (data, event) => {
+        setLoading(true)
+        console.log(data);
+        event.preventDefault();
+        const {email, password, firstName, lastName, gender} = data;
+
+        try{
+            await auth.createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                if(auth.user){
+                    
+                    db.collection('users').doc(auth.user.uid).set({
+                        uid: auth.user.uid,
+                        email: auth.user.email,
+                        displayName: firstName + " " + lastName,
+                        gender
+                    })
+                    Alert.success('Sign Up successful', 5000)
+                    history.push('/menu')  
+                }
+            })
+          }
+          catch(e){
+            Alert.error(e.message, 5000)
+            console.log('Error Signing up with email and password', e);
+            setLoading(false)
+        }
+
+    }
 
     return (
         <div className="bg">
@@ -63,7 +96,7 @@ function SignUp() {
                             {errors.gender && <p>This field is required</p>}
                         </div>
                         <div className="signup-btn-div">
-                            <Button size="lg" onClick={handleSubmit(onSubmit)} className="btn"> Submit</Button>
+                            <Button loading={loading} size="lg" onClick={handleSubmit(onSubmit)} className="btn"> Submit</Button>
                         </div>
                     </form>
                 </div>
