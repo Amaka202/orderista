@@ -1,7 +1,6 @@
 import React from "react";
 import {auth} from '../firebase'
 import { Route, Redirect } from "react-router-dom";
-import {  Alert } from 'rsuite';
 
 export const ProtectedRoute = ({
   component: Component,
@@ -20,7 +19,6 @@ export const ProtectedRoute = ({
             console.log('im not null');
           return (
               <div>
-                {/* {Alert.error('You are not logged in', 5000)} */}
                 <Redirect
                 to={{
                     pathname: "/login",

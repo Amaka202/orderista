@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import {Nav, Button} from 'rsuite';
-import {auth, db} from "../firebase";
+import {Nav} from 'rsuite';
 
 
 import './styles/sidebar.css';
