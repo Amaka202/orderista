@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './styles/login.css'
+import firebase from 'firebase/app';
 import { auth} from "../firebase";
 import {useHistory} from "react-router-dom"
 import './styles/signup.css'
@@ -23,14 +24,25 @@ function Login() {
         const {email, password} = data;
 
         try{
+            await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             await auth.signInWithEmailAndPassword(email, password)
             .then((auth) => {
                 Alert.success('Welcome back!', 5000)
                 history.push('/menu')  
                 })
+
+            // auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            // .then(() => {
+            //   return (
+            //     firebase.auth().signInWithEmailAndPassword(email, password),
+            //     Alert.success('Welcome back!', 5000),
+            //     history.push('/menu')
+            //   )
+                
+            // })
           }
-          catch(e){
-            Alert.error(e.message === 'There is no user record corresponding to this identifier. The user may have been deleted.' && 'Wrong email or password', 5000)
+          catch(e){     
+              Alert.error(e.message === 'The password is invalid or the user does not have a password.' ? 'Invalid password' : 'Invalid login details', 5000)
             console.log('Error Signing up with email and password', e);
             setLoading(false)
         }

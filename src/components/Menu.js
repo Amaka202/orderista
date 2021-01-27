@@ -1,18 +1,24 @@
 import React, {useState} from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
 import Logo from './Logo';
-
+import {loggedInUser} from '../action';
+import {useHistory} from "react-router-dom"
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 
-function Menu() {
+function Menu(props) {
     console.log(currentWindowWidth()[0]);
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
+
+    const history = useHistory('');
+    props.loggedInUser() 
+    props.user !== null && history.push('/login')
     return (
         <Container>
             
@@ -190,4 +196,10 @@ function Menu() {
     )
 }
 
-export default Menu
+function mapStateToProps(state) {
+    return {
+      user: state.user,
+    };
+  }
+
+export default connect(mapStateToProps, {loggedInUser}) (Menu);
