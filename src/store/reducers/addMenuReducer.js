@@ -11,13 +11,14 @@ const initialState = {
 const addMenuReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_MENU':
-            console.log('created menu', action.menu);
-            break;
-    
+            console.log('created menu', action.menu);  
+            return state;
+        case 'ADD_MENU_ERROR':
+            console.log('created menu', action.err); 
+            return state;
         default:
-            break;
+            return state;
     }
-    return state;
 }
 
 export default addMenuReducer;

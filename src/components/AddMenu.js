@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
 import Logo from './Logo';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
 import {connect} from 'react-redux';
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
@@ -88,9 +90,15 @@ function Menu(props) {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        menus: state.addMenu.menus
+        menus: state.firestore.ordered.menus
     }
 }
 
-export default connect(mapStateToProps)(Menu);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'menus'}
+    ])
+) (Menu);

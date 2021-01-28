@@ -15,50 +15,8 @@ import 'firebase/firestore';
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore().settings({timestampsInSnapshots: true});
-  const auth = firebase.auth();
-
-    const provider = new firebase.auth.GoogleAuthProvider();
-  
-    export const signInWithGoogle = () => {
-        auth.signInWithPopup(provider);
-      };
-
-  export const generateUserDocument = async (user, additionalData) => {
-    if (!user) return;
-    const userRef = db.doc(`users/${user.uid}`);
-    const snapshot = await userRef.get();
-    if (!snapshot.exists) {
-      const { email, displayName } = user;
-      try {
-        await userRef.set({
-          displayName,
-          email,
-          ...additionalData
-        });
-        console.log('user added successfully');
-      } catch (error) {
-        console.error("Error creating user document", error);
-      }
-    }
-    return getUserDocument(user.uid);
-  };
-
-  const getUserDocument = async uid => {
-    if (!uid) return null;
-    try {
-      const userDocument = await db.doc(`users/${uid}`).get();
-      return {
-        uid,
-        ...userDocument.data()
-      };
-    } catch (error) {
-      console.error("Error fetching user", error);
-    }
-  };
-
-
-// const storage = firebase.storage();
-
-export { db, auth };
+  firebase.firestore().settings({timestampsInSnapshots: true});
+  export const auth = firebase.auth();
+  export const db = firebase.firestore();
+export default firebase;
 

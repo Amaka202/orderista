@@ -47,10 +47,10 @@ function AddMenuModal(props) {
                                 ref={register ({required: true}) }                    />
                             {errors.price && <p className="error-text">This field is required</p>}
                         </div>
-                        <div>
+                        {/* <div>
                             <label>Upload a Picture of the Meal</label>
                             <input ref={register} type="file" name="mealpic" />
-                        </div>
+                        </div> */}
                     </form>
           </Modal.Body>
           <Modal.Footer>

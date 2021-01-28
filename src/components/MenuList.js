@@ -12,10 +12,10 @@ function MenuList({menus}) {
                             <img src={rice} alt="rice"/>
                         </div>
                         <div className="menu-name">
-                            <p>{menu.menuname}</p>
-                            <p>{menu.menudesc}</p>
+                            <p>{menu.mealName}</p>
+                            <p>{menu.description}</p>
                             <div className="price-div">
-                                <p>₦2000</p>
+                                <p>₦{menu.price}</p>
                                 <label class="checkbox">
                                     <input type="checkbox" />
                                     <span></span>
