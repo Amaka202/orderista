@@ -1,17 +1,18 @@
 import React, {useState} from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
-import rice from './images/rice.jpg'
 import Logo from './Logo';
-
+import {connect} from 'react-redux';
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 import AddMenuModal from './AddMenuModal';
+import MenuList from './MenuList';
 
-function Menu() {
+function Menu(props) {
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
     const [show, setShow] = useState(false);
+    const {menus} = props;
 
     const showModal = () => {
         setShow(true)
@@ -20,6 +21,8 @@ function Menu() {
     const hideModal = () => {
         setShow(false)
     }
+
+    console.log(props);
 
     return (
         <Container>
@@ -64,124 +67,7 @@ function Menu() {
                     {/* <p>loremt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> */}
                 </div>
                 <div className="menu-list">
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>loremt is a long established fact that a reader will</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="menu-item">
-                        <div className="food-pic">
-                            <img src={rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>Rice and Chicken</p>
-                            <p>Peppered chicken flavour</p>
-                            <div className="price-div">
-                                <p>₦2000</p>
-                                {/* <Divider vertical /> */}
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    <MenuList menus={menus}/>
                 </div>
                 <Divider />
                 <AddMenuModal show={show} handleClose={hideModal}>
@@ -201,4 +87,10 @@ function Menu() {
     )
 }
 
-export default Menu
+const mapStateToProps = (state) => {
+    return {
+        menus: state.addMenu.menus
+    }
+}
+
+export default connect(mapStateToProps)(Menu);
