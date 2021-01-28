@@ -1,3 +1,5 @@
+// imp ort 
+
 const initialState = {
     menus: [
         {id: '1', menuname: 'Rice', menudesc: 'its delicious'},
@@ -7,6 +9,14 @@ const initialState = {
 }
 
 const addMenuReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'ADD_MENU':
+            console.log('created menu', action.menu);
+            break;
+    
+        default:
+            break;
+    }
     return state;
 }
 

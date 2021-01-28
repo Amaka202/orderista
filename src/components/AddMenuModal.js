@@ -1,12 +1,17 @@
 import React from 'react'
 import { Modal, Button} from 'rsuite';
 import { useForm } from "react-hook-form";
+import {connect} from 'react-redux';
+import {addMenu} from '../store/actions/addMenuActions';
 import './styles/addmenu.css'
 
 
-function AddMenuModal({handleClose, show, children}) {
+function AddMenuModal(props) {
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const {handleClose, show, children, addMenu} = props
+    const onSubmit = data => {
+      addMenu(data)
+    };
 
     return (
         <div className="modal-container">
@@ -61,4 +66,10 @@ function AddMenuModal({handleClose, show, children}) {
     )
 }
 
-export default AddMenuModal
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMenu: (menu) => dispatch(addMenu(menu))
+  }
+}
+
+export default connect(null, mapDispatchToProps ) (AddMenuModal);

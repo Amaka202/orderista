@@ -15,7 +15,7 @@ import 'firebase/firestore';
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+  const db = firebase.firestore().settings({timestampsInSnapshots: true});
   const auth = firebase.auth();
 
     const provider = new firebase.auth.GoogleAuthProvider();
