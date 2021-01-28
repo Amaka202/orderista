@@ -1,4 +1,4 @@
-import {LOGGED_IN_USER} from './action';
+import {LOGGED_IN_USER} from '../actions/action';
 
 const initialState = {
     user: {}

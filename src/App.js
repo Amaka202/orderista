@@ -11,6 +11,8 @@ import {
 import Menu from './components/Menu';
 import Orders from './components/Orders';
 import AddMenu from './components/AddMenu';
+import OrdersList from './components/OrdersList';
+import OrderDetail from './components/OrderDetail';
 
 export default function App() {
   return (
@@ -19,9 +21,16 @@ export default function App() {
         <Route exact path="/" component={Home} />
         <Route path="/register" component={SignUp} />
         <Route path="/login" component={Login} />
-        <ProtectedRoute exact path="/menu" component={Menu} />
+        <Route exact path="/menu" component={Menu} />
+        <Route path="/myorders" component={Orders} />
+        <Route path="/order/:id" component={OrderDetail} />
+        <Route path="/orderslist" component={OrdersList} />
+        <Route path="/addmenu" component={AddMenu} />
+
+
+        {/* <ProtectedRoute exact path="/menu" component={Menu} />
         <ProtectedRoute path="/orders" component={Orders} />
-        <ProtectedRoute path="/addmenu" component={AddMenu} />
+        <ProtectedRoute path="/addmenu" component={AddMenu} /> */}
       </Switch>
     </div>
   )

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
 import Logo from './Logo';
-import {loggedInUser} from '../action';
+import {loggedInUser} from '../store/actions/action';
 import {useHistory} from "react-router-dom"
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
@@ -15,10 +15,10 @@ function Menu(props) {
     console.log(currentWindowWidth()[0]);
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
-
+    console.log(props);
     const history = useHistory('');
-    props.loggedInUser() 
-    props.user !== null && history.push('/login')
+    // props.loggedInUser() 
+    // props.user !== null && history.push('/login')
     return (
         <Container>
             

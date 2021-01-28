@@ -1,4 +1,4 @@
-import {auth} from './firebase';
+import {auth} from '../../firebase';
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 
 export const loggedInUser = () => {
