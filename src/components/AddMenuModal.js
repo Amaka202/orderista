@@ -8,7 +8,7 @@ import './styles/addmenu.css'
 
 function AddMenuModal(props) {
     const { register, handleSubmit, errors } = useForm();
-    const {handleClose, show, children, addMenu} = props
+    const {handleClose, show, addMenu} = props
     const onSubmit = data => {
       addMenu(data)
     };

@@ -10,13 +10,13 @@
 
 .logo span{
     font-family: 'Kaushan Script', cursive;
-    background: -webkit-linear-gradient(rgb(243, 214, 214),#ED5358,#7bd9f3);
+    background: -webkit-linear-gradient(rgb(243, 85, 85),#f1e4e5,#7bd9f3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .logo svg>path{
-    fill:#ED5358;
+    fill:#d3c6c6;
   }
 
   .header1-div button{

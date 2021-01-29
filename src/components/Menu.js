@@ -10,6 +10,7 @@ import {useHistory} from "react-router-dom"
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
 import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
+import AdminHeader from './Header/AdminHeader';
 
 function Menu(props) {
     console.log(currentWindowWidth()[0]);
@@ -21,7 +22,10 @@ function Menu(props) {
     // props.user !== null && history.push('/login')
     return (
         <Container>
-            
+            <Header>
+                <AdminHeader />
+            </Header>
+
 
             {currentWindowWidth()[0] > 700 
                 ?
@@ -49,7 +53,6 @@ function Menu(props) {
             }
             
             <Container>
-                <Header></Header>
                 <Content>
                 <div className="menu-container">
                 <Logo />
