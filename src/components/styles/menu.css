@@ -77,14 +77,13 @@ body{
     color: #C9CAD5;
 }
 
-.burger-icon{
-    /* margin-bottom: 1rem; */
+/* .burger-icon{
     background-color: white;
     color: #ED5358;
-}
+} */
+
 .rs-drawer-content{
     background-color: #ED5358;
-    width: 250px;
 }
 
 .price-div{

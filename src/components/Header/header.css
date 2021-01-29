@@ -1,12 +1,95 @@
 .rs-navbar-header{
-    background-color: ;
+    text-align: center;
 }
 
 .rs-navbar.rs-navbar-default{
     background-color: #ED5358;
     color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 }
 
-.rs-nav-item-content{
+.rs-navbar.rs-navbar-default .rs-dropdown .rs-dropdown-toggle, .rs-navbar.rs-navbar-default .rs-nav-item > .rs-nav-item-content, .rs-navbar.rs-navbar-default .rs-dropdown .rs-dropdown-toggle:hover, .rs-navbar.rs-navbar-default .rs-nav-item > .rs-nav-item-content:hover, .rs-navbar.rs-navbar-default .rs-dropdown .rs-dropdown-toggle:focus, .rs-navbar.rs-navbar-default .rs-nav-item > .rs-nav-item-content:focus, .rs-navbar.rs-navbar-default .rs-dropdown .rs-dropdown-toggle:active, .rs-navbar.rs-navbar-default .rs-nav-item > .rs-nav-item-content:active{
+    font-size: 1.3em;
+    color: #f1e4e5;
+}
+
+.rs-nav-default .rs-nav-item:not(.rs-nav-item-active):not(.rs-nav-item-disabled) > .rs-nav-item-content:hover, .rs-nav-default .rs-nav-item:not(.rs-nav-item-active):not(.rs-nav-item-disabled) > .rs-nav-item-content:focus{
+    background: none;
+}
+
+.nav-bg{
+    width: 100%;
+    background: black url('../images//nav-pic.jpg') no-repeat center top;
+    height: 12rem;
+    background-size: cover;
+    resize: both;
+    margin-top: 5.5rem;
+
+}
+
+.bg-write-up{
+    font-family: 'Kaushan Script', cursive;
+    padding: 1em 2em;
     color: white;
+    font-size: 2em;
+}
+
+.rs-btn .rs-btn-default .rs-btn-icon .burger-icon .rs-btn-icon-placement-left{
+
+}
+
+.rs-ripple{
+    background-color: #ED5358;
+
+}
+.burger-icon{
+    margin: 0.7rem 1.5rem;
+    background-color: #ED5358;
+}
+
+.burger-icon:hover{
+    background-color: #f07277;
+
+}
+
+.burger-icon:active{
+    background-color: #f07277;
+
+}
+
+.navbar ul li{
+    color: blue;
+    font-size: 0.9em;
+    list-style: none;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.navbar ul li:hover{
+    background-color: #e28d93;
+    border-radius: 20px;
+}
+
+.rs-btn.rs-btn-icon > .rs-icon{
+    color: #f1e4e5;
+    font-size: 1rem;
+}
+
+.rs-icon .rs-icon-bars{
+    color: black;
+
+}
+
+
+@media only screen and (max-width: 700px){
+    .bg-write-up{
+        font-size: 1.2em;
+    }
+
+    .nav-bg{
+        margin-top: 3.6rem;
+        height: 8rem;
+    }
 }

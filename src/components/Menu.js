@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import './styles/menu.css';
-import './styles/sidebar.css';
+// import './styles/menu.css';
+// import './styles/sidebar.css';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
@@ -27,7 +27,7 @@ function Menu(props) {
             </Header>
 
 
-            {currentWindowWidth()[0] > 700 
+            {/* {currentWindowWidth()[0] > 700 
                 ?
                 <Sidebar className="sidebar">
                     {sideBarContent()}
@@ -50,12 +50,11 @@ function Menu(props) {
                     </Drawer.Footer>  
                 </Drawer>
                 </>
-            }
+            } */}
             
             <Container>
                 <Content>
                 <div className="menu-container">
-                <Logo />
                 <div>
                 <div className="menu-title">
                     <h3>Choose what you</h3>

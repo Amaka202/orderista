@@ -5,27 +5,29 @@
 }
 
 .logo{
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin: 1rem;
 }
 
 .logo span{
     font-family: 'Kaushan Script', cursive;
-    background: -webkit-linear-gradient(rgb(243, 85, 85),#f1e4e5,#7bd9f3);
+    background: -webkit-linear-gradient(rgb(243, 85, 85),#f1e4e5,#f1e4e5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .logo svg>path{
-    fill:#d3c6c6;
+    fill:#f1e4e5;
   }
 
   .header1-div button{
       background-color: #ED5358;
   }
 
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 700px){
     .logo{
         font-size: 1.2rem;
+        margin: 0.8rem;
     }
 
     .header1-div button{
