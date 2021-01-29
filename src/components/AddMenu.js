@@ -11,7 +11,7 @@ import currentWindowWidth from './getCurrentWindowWidth';
 import AddMenuModal from './AddMenuModal';
 import MenuList from './MenuList';
 
-function Menu(props) {
+function AddMenu(props) {
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
     const [show, setShow] = useState(false);
     const {menus} = props;
@@ -101,4 +101,4 @@ export default compose(
     firestoreConnect([
         {collection: 'menus'}
     ])
-) (Menu);
+) (AddMenu);

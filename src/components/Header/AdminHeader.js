@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import { Navbar, Nav } from 'rsuite';
-import {Link} from 'react-router-dom'
-import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
+import {Link} from 'react-router-dom';
+import { Container, Button, Drawer, IconButton, Icon} from 'rsuite';
 import Logo from '../Logo';
 import currentWindowWidth from '../getCurrentWindowWidth';
 import './header.css';
+import{connect} from 'react-redux';
+import {signOut} from '../../store/actions/authActions'
 // import {Link } from 'react-router-dom'
 
-function AdminHeader() {
+function AdminHeader(props) {
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-
     return (
         <Container>
             {currentWindowWidth()[0] > 700 
@@ -22,21 +23,21 @@ function AdminHeader() {
                     <Navbar.Body>
                     <Nav pullRight  className="nav-div">
                         <Nav.Item>
-                            <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Home</Link>
+                            <Link to="/" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Home</Link>
                         </Nav.Item>
                         <Nav.Item>
                         <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Menu</Link>
 
                         </Nav.Item>
                         <Nav.Item>
-                        <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Add Menu</Link>
+                        <Link to="/addmenu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Add Menu</Link>
 
                         </Nav.Item>
                         <Nav.Item>
-                        <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Orders</Link>
+                        <Link to="/orders" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Orders</Link>
                         </Nav.Item>
                         <Nav.Item>
-                        <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Sign Out</Link>
+                        <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
 
                         </Nav.Item>
                     </Nav>
@@ -80,8 +81,8 @@ function AdminHeader() {
                                 <li>
                                 <Link to="/orders" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Orders</Link>
                                 </li>
-                                <li>
-                                <Link to="/logout" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Sign Out</Link>
+                                <li >
+                                    <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
                                 </li>
                             </ul>
                             </Navbar.Body>
@@ -106,4 +107,18 @@ function AdminHeader() {
     )
 }
 
-export default AdminHeader;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+
+    }
+}
+
+const mapDispathToProps = (dispatch) => {
+    return {
+        signOut: () => dispatch(signOut())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispathToProps) (AdminHeader);

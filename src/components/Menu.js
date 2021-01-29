@@ -4,17 +4,18 @@ import React, {useState} from 'react'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
-import Logo from './Logo';
 import {loggedInUser} from '../store/actions/action';
-import {useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom";
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
-import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 import AdminHeader from './Header/AdminHeader';
+import SignedInHeader from './Header/SignedInHeader';
+import MyHeader from './Header/MyHeader';
 
 function Menu(props) {
     console.log(currentWindowWidth()[0]);
-    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
     console.log(props);
     const history = useHistory('');
@@ -23,35 +24,8 @@ function Menu(props) {
     return (
         <Container>
             <Header>
-                <AdminHeader />
-            </Header>
-
-
-            {/* {currentWindowWidth()[0] > 700 
-                ?
-                <Sidebar className="sidebar">
-                    {sideBarContent()}
-                </Sidebar>
-                :
-                <>
-                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
-
-                <Drawer
-                    size={'xs'}
-                    placement={'left'}
-                    show={openMobileDrawer}
-                    className="drawer"
-                    onHide={() => setOpenMobileDrawer(false)}>
-                     <Drawer.Body className="drawer-body">
-                        {sideBarContent()}     
-                    </Drawer.Body> 
-                    <Drawer.Footer className="menu-btn">
-                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
-                    </Drawer.Footer>  
-                </Drawer>
-                </>
-            } */}
-            
+                <MyHeader />
+            </Header>            
             <Container>
                 <Content>
                 <div className="menu-container">
@@ -204,4 +178,9 @@ function mapStateToProps(state) {
     };
   }
 
-export default connect(mapStateToProps, {loggedInUser}) (Menu);
+  export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'menus'}
+    ])
+) (Menu);

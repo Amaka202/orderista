@@ -20,6 +20,22 @@
     fill:#f1e4e5;
   }
 
+  .logo1{
+    font-size: 1.8rem;
+    margin: 1rem;
+}
+
+.logo1 span{
+    font-family: 'Kaushan Script', cursive;
+    background: -webkit-linear-gradient(rgb(243, 85, 85),#ED5358,#f1e4e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo1 svg>path{
+    fill:#ED5358;
+  }
+
   .header1-div button{
       background-color: #ED5358;
   }
@@ -31,8 +47,8 @@
     }
 
     .header1-div button{
-        font-size: 1em;
-        padding: 7px;
+        /* font-size: 1em; */
+        /* padding: 7px; */
         background-color: #ED5358;
     }
 }
