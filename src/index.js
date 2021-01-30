@@ -8,12 +8,24 @@ import { Provider } from "react-redux";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import thunk from 'redux-thunk';
+import {connect} from 'react-redux';
 import { createFirestoreInstance, getFirestore, reduxFirestore } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import fbConfig from './firebase';
 import firebase from 'firebase/app'
 
-  
+
+const mapStateToProps = (state) => ({
+  authIsLoaded: state.firebase.auth && state.firebase.auth.isLoaded,
+});
+const WaitTillAuth = connect(mapStateToProps)(({ authIsLoaded }) => {
+  if (!authIsLoaded) return <div style={{backgroundColor: '#C9CAD5'}}></div>;
+  return (
+      // my components that should only loaded after auth is loaded
+      <App />
+      );
+});
+
 
 const store = createStore(rootReducer, 
   compose(
@@ -35,10 +47,10 @@ ReactDOM.render(
     <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfprops}>
       <Router>
-        <App />
+        <WaitTillAuth />
       </Router>
     </ReactReduxFirebaseProvider>
-    </Provider>
+    </Provider>  
   </React.StrictMode>,
   document.getElementById('root')
 );

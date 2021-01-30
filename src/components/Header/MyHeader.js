@@ -8,7 +8,15 @@ import {connect} from 'react-redux'
 function Header(props) {
     const {authState} = props;
     console.log(authState);
-    const correctHeader = authState.uid ? <SignedInHeader /> : <SignOutHeader />
+    let correctHeader;
+    if(authState.email === 'admin@gmail.com' ) {
+      correctHeader = <AdminHeader />
+    }else if (authState.uid){
+      correctHeader = <SignedInHeader />
+    }else {
+      correctHeader = <SignOutHeader />
+    }
+    // = authState.uid ? <SignedInHeader /> : <SignOutHeader />
     return (
         <div>
           {correctHeader}
