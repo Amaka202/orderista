@@ -1,100 +1,72 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
-import { Link } from 'react-router-dom'
-import Logo from './Logo';
+import dayjs from 'dayjs';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import MyHeader from './Header/MyHeader'
 
-import { Container, Header, Content, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
-import sideBarContent from './sideBarContent'
-import currentWindowWidth from './getCurrentWindowWidth';
+import { Container, Header, Content, Footer} from 'rsuite';
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
-function OrdersList() {
-    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
-
+function OrdersList(props) {
+    const {orders, menus} = props;
+    console.log(orders);
+    const orderList = orders && orders.map(val => {
+        return(
+                <div className="order-item" key={val.id}>
+                    <p>{`${val.userName} made the following order(s) ${dayjs(val.createdAt).fromNow()}`}</p>
+                    <div>
+                        <ul>
+                            <li>
+                                {
+                                    Object.entries(val.orderedmeal).forEach((key, index) => {
+                                        console.log(`${key} het`);
+                                    })
+                                }
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <p>2 hours ago</p>
+                </div>
+        )
+    })
     return (
         <Container>
-            
-
-            {currentWindowWidth()[0] > 700 
-                ?
-                <Sidebar className="sidebar">
-                    {sideBarContent()}
-                </Sidebar>
-                :
-                <>
-                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
-
-                <Drawer
-                    size={'xs'}
-                    placement={'left'}
-                    show={openMobileDrawer}
-                    className="drawer"
-                    onHide={() => setOpenMobileDrawer(false)}>
-                     <Drawer.Body className="drawer-body">
-                     {sideBarContent()}     
-                    </Drawer.Body> 
-                    <Drawer.Footer className="menu-btn">
-                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
-                    </Drawer.Footer>  
-                </Drawer>
-                </>
-            }
-            
-            <Container>
-                <Header></Header>
+            <Header>
+                <MyHeader />
+            </Header>            
                 <Content>
                 <div className="menu-container">
-                <Logo />
-                <div>
-                
-                <div className="order-list">
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                        <Link to="/register" style={{color: 'white', textDecoration: 'none'}}>Sign Up</Link>
-
-                    </div> <br />
-
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                    </div> <br />
-
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                    </div> <br />
-
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                    </div> <br />
-
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                    </div> <br />
-
-                    <div className="order-item">
-                        <p>Umeh Chiamaka</p>
-                        <p>Fried Rice and Chicken</p>
-                        <p>2 hours ago</p>
-                    </div> <br />
+                    <div>
+                        <p>Orders </p>
+                    </div>
+                    <div className="order-list">
+                        {orderList}
+                    </div>
                 </div>
-                
-            </div>
-            </div>
                 </Content>
                 <Footer></Footer>
-            </Container>
         </Container>
     )
 }
 
-export default OrdersList;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        orders: state.firestore.ordered.orders,
+        menus: state.firestore.ordered.menus,
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'menus'},
+        {collection: 'orders'}
+    ])
+) (OrdersList);
 
