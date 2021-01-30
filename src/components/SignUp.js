@@ -89,6 +89,25 @@ function SignUp() {
                             {errors.password && <p>This field is required</p>}
                         </div>
                         <div className="form-control">
+                            <label>Phone Number</label>
+                            <input 
+                                name="phone"
+                                type='number'
+                                defaultValue="" 
+                                ref={register ({required: true}) } 
+                            />
+                            {errors.phone && <p>This field is required</p>}
+                        </div>
+                        <div className="form-control">
+                            <label>Delivery Address</label>
+                            <input 
+                                name="address" 
+                                defaultValue="" 
+                                ref={register ({required: true}) } 
+                            />
+                            {errors.address && <p>This field is required</p>}
+                        </div>
+                        <div className="form-control">
                             <label>Gender</label>
                             <select ref={register} name="gender">
                                 <option value="male">Male</option>
