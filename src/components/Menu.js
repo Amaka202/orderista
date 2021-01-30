@@ -75,14 +75,18 @@ function Menu(props) {
                 <div className="menu-list">
                     {menu}
                 </div>
-                <label>Preferences</label>
-                <textarea
-                    ref={register}
-                    name='preferences'
-                    placeholder="Tell us about your preferences, allergies, how many plates etc. Anything we should know about your eating habit"
-                >
+                <Divider />
 
-                </textarea>
+                <div className="textarea-div">
+                    <label>Preferences</label>
+                    <textarea
+                        ref={register}
+                        name='preferences'
+                        placeholder="Tell us about your preferences, allergies, how many plates etc. Anything we should know about your eating habit"
+                    >
+
+                    </textarea>
+                </div>
                 <Divider />
                 <div className="menu-btn">
                     <Button size="lg" color="white" onClick={handleSubmit(onSubmit)}>

@@ -53,15 +53,15 @@ body{
     display: flex;
     justify-content: space-around;
     align-content: space-around;
-    padding: 3%;
-    width: 22rem;
-    height: 12rem;
+    padding: 1%;
+    /* width: 22rem;
+    height: 12rem; */
     margin-bottom: 1rem;
 }
 
 .menu-item .food-pic{
     margin-right: 1rem;
-    width: 40%;
+    width: 50%;
 }
 
 .menu-item .menu-name{
@@ -143,10 +143,36 @@ body{
     border: 2px solid #34495E;
 }
 
+.textarea-div{
+    margin-top: 1rem;
+    margin: auto;
+    /* text-align: center; */
+    /* width: 50%; */
+}
+
+.textarea-div label{
+    /* text-align: left; */
+    display: block;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 1rem;
+}
+
+.textarea-div textarea{
+    /* width: 50%; */
+    height: 10rem;
+    background-color: white;
+    border: 1px solid grey;
+}
+
 .menu-btn{
     text-align: center;
+    color: white;
 }
 
 .menu-btn button{
     background-color: #ED5358;
+    color: white;
+
 }
+
