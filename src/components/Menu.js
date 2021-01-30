@@ -14,12 +14,10 @@ import MyHeader from './Header/MyHeader';
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
     const { handleSubmit, register } = useForm();
-    let menuId = menus && menus.map(val => val.id)
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
     console.log(user);
     console.log(props);
-    console.log(menuId);
 
     const onSubmit = data => {
         const order = {
@@ -29,7 +27,6 @@ function Menu(props) {
             createdAt: new Date().toLocaleString()
         }
         addOrder(order)
-        console.log(menuId);
         console.log(order);
       };
 
