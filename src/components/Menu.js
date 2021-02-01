@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 // import './styles/menu.css';
 // import './styles/sidebar.css';
 import { connect } from "react-redux";
+import {storage} from '../firebase';
 import rice from './images/rice.jpg'
 import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
@@ -18,6 +19,13 @@ function Menu(props) {
     user = user && user[0];
     console.log(user);
     console.log(props);
+
+    const myData = [];
+    console.log(myData);
+    const handleChecked = (meal) => {
+        myData.map(val => val.mealName !== meal.mealName && myData.push(meal))
+        console.log(myData);
+    }
 
     const onSubmit = data => {
         const order = {
@@ -36,10 +44,10 @@ function Menu(props) {
       const drink = menus && menus.filter(val => val.cathegory === "drink")
       console.log("entree", entree);
 
-      const entreeMenu = displayMenyFnx(entree, register);
-      const appetizerMenu = displayMenyFnx(appetizer, register);
-      const desertMenu = displayMenyFnx(desert, register);
-      const drinkMenu = displayMenyFnx(drink, register)
+      const entreeMenu = displayMenyFnx(entree, register, handleChecked);
+      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
+      const desertMenu = displayMenyFnx(desert, register, handleChecked);
+      const drinkMenu = displayMenyFnx(drink, register, handleChecked)
     
     return (
         <Container>

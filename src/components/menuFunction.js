@@ -3,7 +3,7 @@ import rice from './images/rice.jpg'
 
 
 
-export const displayMenyFnx = (arr, register) => {
+export const displayMenyFnx = (arr, register, handleChecked) => {
     return  arr && arr.map(val => {
         return (
             <div className="menu-item" key={val.id}>
@@ -20,7 +20,11 @@ export const displayMenyFnx = (arr, register) => {
                                         ref={register}
                                         name='orderedmeal'
                                         value={val.id}
-                                        // onChange={handleSubmit(onSubmit)}
+                                        onClick={() => handleChecked({
+                                            mealName: val.mealName,
+                                            mealId: val.id,
+                                            mealPrice: val.price
+                                        })}
                                     />
                                     <span></span>
                                 </label>
