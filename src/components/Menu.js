@@ -20,16 +20,31 @@ function Menu(props) {
     console.log(user);
     console.log(props);
 
-    const myData = [];
-    console.log(myData);
-    const handleChecked = (meal) => {
-        myData.map(val => val.mealName !== meal.mealName && myData.push(meal))
-        console.log(myData);
-    }
+   
+
+    // const filteredMeal = myData.reduce((acc, current) => {
+    //     const x = acc.find(item => item.mealName === current.mealName);
+    //     if (!x) {
+    //       return acc.concat([current]);
+    //     } else {
+    //       return acc;
+    //     }
+    //   }, []);
+    
+
+
+
 
     const onSubmit = data => {
+        const myData = [];
+        const handleChecked = (meal) => {
+            myData.push(meal)
+            console.log(myData);
+        }
+
         const order = {
             ...data,
+            mealArr1: filteredMeal,
             userName: user.displayName,
             userEmail: user.email,
             createdAt: new Date().toLocaleString()

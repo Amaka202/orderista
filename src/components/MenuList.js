@@ -24,7 +24,7 @@ function MenuList({menus, deleteMenu}) {
                                 <p>₦{menu.price}</p>
                             </div>
                             <div className="del-div">
-                                <h6 onClick={handleDeleteMenu} id={menu.id}>Delete Menu</h6>
+                                <h6 onClick={() => handleDeleteMenu(menu.id)}>Delete Menu</h6>
                             </div>
                         </div>
                     </div>

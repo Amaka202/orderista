@@ -19,7 +19,7 @@ export const displayMenyFnx = (arr, register, handleChecked) => {
                                     <input type="checkbox" 
                                         ref={register}
                                         name='orderedmeal'
-                                        value={val.id}
+                                        value=''
                                         onClick={() => handleChecked({
                                             mealName: val.mealName,
                                             mealId: val.id,
