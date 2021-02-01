@@ -17,8 +17,7 @@ function Menu(props) {
     const { handleSubmit, register } = useForm();
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
-    console.log(user);
-    console.log(props);
+
 
    
 
@@ -39,7 +38,6 @@ function Menu(props) {
         const myData = [];
         const handleChecked = (meal) => {
             myData.push(meal)
-            console.log(myData);
         }
 
         const order = {
@@ -50,14 +48,12 @@ function Menu(props) {
             createdAt: new Date().toLocaleString()
         }
         addOrder(order)
-        console.log(order);
       };
 
       const entree = menus && menus.filter(val => val.cathegory === "entree")
       const appetizer = menus && menus.filter(val => val.cathegory === "appetizer")
       const desert = menus && menus.filter(val => val.cathegory === "desert")
       const drink = menus && menus.filter(val => val.cathegory === "drink")
-      console.log("entree", entree);
 
       const entreeMenu = displayMenyFnx(entree, register, handleChecked);
       const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
@@ -122,7 +118,6 @@ function Menu(props) {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         menus: state.firestore.ordered.menus,
         userId: state.firebase.auth.uid,

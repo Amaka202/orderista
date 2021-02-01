@@ -24,7 +24,6 @@ function AddMenu(props) {
         setShow(false)
     }
 
-    console.log(props);
 
     return (
         <Container>
@@ -60,7 +59,6 @@ function AddMenu(props) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         menus: state.firestore.ordered.menus
     }
