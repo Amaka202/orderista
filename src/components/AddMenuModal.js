@@ -21,6 +21,16 @@ function AddMenuModal(props) {
           </Modal.Header>
           <Modal.Body>
                     <form className="modal-form">
+                      <div className="form-control">
+                            <label>Cathegory</label>
+                            <select ref={register} name="cathegory">
+                              <option value="entree">Entrée</option>
+                                <option value="appetizer">Appetizer</option>
+                                <option value="desert">Desert</option>
+                                <option value="drink">Drink</option>
+                            </select>
+                            {errors.cathegory && <p>This field is required</p>}
+                        </div>
                         <div className="form-control">
                             <label>Meal Name</label>
                             <input 

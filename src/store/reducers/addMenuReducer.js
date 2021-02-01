@@ -16,6 +16,12 @@ const addMenuReducer = (state = initialState, action) => {
         case 'ADD_MENU_ERROR':
             console.log('created menu', action.err); 
             return state;
+        case 'DELETE_MENU':
+            console.log('deleted menu', action.id);  
+            return state;
+        case 'DELETE_MENU_ERROR':
+            console.log('deleted menu', action.err); 
+            return state;        
         default:
             return state;
     }

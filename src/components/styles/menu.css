@@ -48,14 +48,14 @@ body{
 }
 
 .menu-item{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     align-content: space-around;
     padding: 1%;
-    /* width: 22rem;
-    height: 12rem; */
+    width: 33.3%;
+    /* height: 12rem; */
     margin-bottom: 1rem;
 }
 
@@ -146,6 +146,7 @@ body{
 .textarea-div{
     margin-top: 1rem;
     margin: auto;
+    padding: 0 5%;
     /* text-align: center; */
     /* width: 50%; */
 }
@@ -160,7 +161,7 @@ body{
 
 .textarea-div textarea{
     /* width: 50%; */
-    height: 10rem;
+    height: 7rem;
     background-color: white;
     border: 1px solid grey;
 }
@@ -174,5 +175,27 @@ body{
     background-color: #ED5358;
     color: white;
 
+}
+
+.del-div{
+    margin-top: 1rem;
+    font-weight: 100;
+}
+
+.del-div h6{
+    font-size: 0.8em;
+    text-decoration: underline;
+    color: #C9CAD5;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px){
+    .menu-item{
+        width: 100%;
+    }
+
+    .textarea-div textarea{
+        width: 100%;
+    }
 }
 

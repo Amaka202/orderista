@@ -10,9 +10,9 @@ import sideBarContent from './sideBarContent'
 import currentWindowWidth from './getCurrentWindowWidth';
 import AddMenuModal from './AddMenuModal';
 import MenuList from './MenuList';
+import MyHeader from './Header/MyHeader';
 
 function AddMenu(props) {
-    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
     const [show, setShow] = useState(false);
     const {menus} = props;
 
@@ -28,45 +28,15 @@ function AddMenu(props) {
 
     return (
         <Container>
-            
-
-            {currentWindowWidth()[0] > 700 
-                ?
-                <Sidebar className="sidebar">
-                    {sideBarContent()}
-                </Sidebar>
-                :
-                <>
-                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
-
-                <Drawer
-                    size={'xs'}
-                    placement={'left'}
-                    show={openMobileDrawer}
-                    className="drawer"
-                    onHide={() => setOpenMobileDrawer(false)}>
-                     <Drawer.Body className="drawer-body">
-                     {sideBarContent()}     
-                    </Drawer.Body> 
-                    <Drawer.Footer className="menu-btn">
-                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
-                    </Drawer.Footer>  
-                </Drawer>
-                </>
-            }
-            
+            <Header>
+                <MyHeader />
+            </Header>
             <Container>
-                <Header></Header>
                 <Content>
                 <div className="menu-container">
-                <Logo />
                 <div>
                 <div className="menu-title">
-                    <h3>Choose what you</h3>
-                    <h4>want to eat today</h4>
-                    <p>Today's Menu</p>
-                    <p className="small-p">(Check the box to order)</p>
-                    {/* <p>loremt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> */}
+                    <h3>Added menus</h3>
                 </div>
                 <div className="menu-list">
                     <MenuList menus={menus}/>

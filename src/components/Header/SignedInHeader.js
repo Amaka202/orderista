@@ -30,6 +30,10 @@ function SignInHeader(props) {
 
                         </Nav.Item>
                         <Nav.Item>
+                        <Link to="/cart" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Cart</Link>
+
+                        </Nav.Item>
+                        <Nav.Item>
                         <Link to="/about" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>About Us</Link>
 
                         </Nav.Item>
@@ -37,7 +41,7 @@ function SignInHeader(props) {
                         <Link to="/contact" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Contact Us</Link>
                         </Nav.Item>
                         <Nav.Item>
-                        <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
+                        <a onClick={props.signOut} href="/login" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Log Out</a>
 
                         </Nav.Item>
                     </Nav>
@@ -70,19 +74,22 @@ function SignInHeader(props) {
                             <Navbar.Body>
                             <ul>
                                 <li>
-                                <Link to="/" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Home</Link>
+                                <Link to="/" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Home</Link>
                                 </li>
                                 <li>
-                                <Link to="/menu" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Menu</Link>
+                                <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Menu</Link>
                                 </li>
                                 <li>
-                                <Link to="/addmenu" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>About Us</Link>
+                                <Link to="/cart" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Cart</Link>
                                 </li>
                                 <li>
-                                <Link to="/orders" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Contact Us</Link>
+                                <Link to="/about" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>About Us</Link>
+                                </li>
+                                <li>
+                                <Link to="/contact" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Contact Us</Link>
                                 </li>
                                 <li >
-                                    <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
+                                    <a onClick={props.signOut} href="/login" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
                                 </li>
                             </ul>
                             </Navbar.Body>

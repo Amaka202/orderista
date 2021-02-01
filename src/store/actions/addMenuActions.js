@@ -4,9 +4,6 @@ export const addMenu = (menu) => {
         const firestore = getFirestore();
         firestore.collection('menus').add({
             ...menu,
-            authorFirstName: 'amaka',
-            authorLastName: 'umeh',
-            authorId: 12345,
             createdAt: new Date()
         }).then(() => {
             dispatch({
@@ -22,3 +19,24 @@ export const addMenu = (menu) => {
             
       }
     }
+
+    export const deleteMenu = (id) => {
+        return (dispatch, getState, {getFirebase, getFirestore}) => {
+            // make async call to db
+            const firestore = getFirestore();
+            firestore.collection('menus').doc(id)
+            .delete()
+            .then(() => {
+                dispatch({
+                    type: 'DELETE_MENU',
+                    id
+                })
+            }).catch((e) => {
+                dispatch({
+                    type: 'DELETE_MENU_ERROR',
+                    e
+                })
+            })
+                
+          }
+        }

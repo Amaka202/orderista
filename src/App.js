@@ -9,7 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import Menu from './components/Menu';
-import Orders from './components/Orders';
+import Cart from './components/Cart';
 import AddMenu from './components/AddMenu';
 import OrdersList from './components/OrdersList';
 import OrderDetail from './components/OrderDetail';
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/register" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route exact path="/menu" component={Menu} />
-        <Route path="/myorders" component={Orders} />
+        <Route path="/myorders" component={Cart} />
         <Route path="/order/:id" component={OrderDetail} />
         <Route path="/orderslist" component={OrdersList} />
         <Route path="/addmenu" component={AddMenu} />

@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 // import './styles/menu.css';
 // import './styles/sidebar.css';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import rice from './images/rice.jpg'
+import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import {addOrder} from '../store/actions/orderActions';
@@ -30,31 +30,16 @@ function Menu(props) {
         console.log(order);
       };
 
-    const menu = menus && menus.map(val => {
-        return (
-            <div className="menu-item" key={val.id}>
-                        <div className="food-pic">
-                            <img src={val.foodPic ? val.foodPic : rice} alt="rice"/>
-                        </div>
-                        <div className="menu-name">
-                            <p>{val.mealName}</p>
-                            <p>{val.description}</p>
-                            <div className="price-div">
-                                <p>{val.price}</p>
-                                <label class="checkbox">
-                                    <input type="checkbox" 
-                                        ref={register}
-                                        name='orderedmeal'
-                                        value={val.id}
-                                        // onChange={handleSubmit(onSubmit)}
-                                    />
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-        )
-    })
+      const entree = menus && menus.filter(val => val.cathegory === "entree")
+      const appetizer = menus && menus.filter(val => val.cathegory === "appetizer")
+      const desert = menus && menus.filter(val => val.cathegory === "desert")
+      const drink = menus && menus.filter(val => val.cathegory === "drink")
+      console.log("entree", entree);
+
+      const entreeMenu = displayMenyFnx(entree, register);
+      const appetizerMenu = displayMenyFnx(appetizer, register);
+      const desertMenu = displayMenyFnx(desert, register);
+      const drinkMenu = displayMenyFnx(drink, register)
     
     return (
         <Container>
@@ -70,12 +55,23 @@ function Menu(props) {
                     <h4>want to eat today</h4>
                     <p>Today's Menu</p>
                     <p className="small-p">(Check the box to order)</p>
-                    {/* <p>loremt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> */}
                 </div>
+                <Divider>Entrée</Divider>
                 <div className="menu-list">
-                    {menu}
+                    {entreeMenu}
                 </div>
-                <Divider />
+                <Divider>Appetizer</Divider>
+                <div className="menu-list">
+                    {appetizerMenu}
+                </div>
+                <Divider>Desert</Divider>
+                <div className="menu-list">
+                    {desertMenu}
+                </div>
+                <Divider>Drinks</Divider>
+                <div className="menu-list">
+                    {drinkMenu}
+                </div>
 
                 <div className="textarea-div">
                     <label>Preferences</label>

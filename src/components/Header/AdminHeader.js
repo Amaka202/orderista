@@ -26,10 +26,6 @@ function AdminHeader(props) {
                             <Link to="/" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Home</Link>
                         </Nav.Item>
                         <Nav.Item>
-                        <Link to="/menu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Menu</Link>
-
-                        </Nav.Item>
-                        <Nav.Item>
                         <Link to="/addmenu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Add Menu</Link>
 
                         </Nav.Item>
@@ -37,7 +33,7 @@ function AdminHeader(props) {
                         <Link to="/orders" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Orders</Link>
                         </Nav.Item>
                         <Nav.Item>
-                        <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
+                        <a onClick={props.signOut} href="/login" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Log Out</a>
 
                         </Nav.Item>
                     </Nav>
@@ -70,19 +66,16 @@ function AdminHeader(props) {
                             <Navbar.Body>
                             <ul>
                                 <li>
-                                <Link to="/" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Home</Link>
+                                <Link to="/" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Home</Link>
                                 </li>
                                 <li>
-                                <Link to="/menu" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Menu</Link>
+                                <Link to="/addmenu" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Add Menu</Link>
                                 </li>
                                 <li>
-                                <Link to="/addmenu" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Add Menu</Link>
-                                </li>
-                                <li>
-                                <Link to="/orders" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Orders</Link>
+                                <Link to="/orderslist" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>OrdersList</Link>
                                 </li>
                                 <li >
-                                    <a onClick={props.signOut} href="/login" style={{color: 'white', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
+                                    <a onClick={props.signOut} href="/login" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.4em'}}>Log Out</a>
                                 </li>
                             </ul>
                             </Navbar.Body>

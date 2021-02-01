@@ -9,20 +9,17 @@ function Header(props) {
     const {authState} = props;
     console.log(authState);
     let correctHeader;
-    if(authState.email === 'admin@gmail.com' ) {
-      correctHeader = <AdminHeader />
-    }else if (authState.uid){
-      correctHeader = <SignedInHeader />
-    }else {
+
+    if(!authState.email){
       correctHeader = <SignOutHeader />
+    }else if (authState.email !== 'admin@gmail.com'){
+      correctHeader = <SignedInHeader />
+    }else{
+      correctHeader = <AdminHeader />
     }
-    // = authState.uid ? <SignedInHeader /> : <SignOutHeader />
     return (
         <div>
           {correctHeader}
-            {/* <AdminHeader />
-            <SignedInHeader /> 
-            <SignOutHeader /> */}
         </div>
     )
 }

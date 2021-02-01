@@ -1,8 +1,14 @@
 import React from 'react'
 import rice from './images/rice.jpg'
 import './styles/menu.css';
+import {connect} from 'react-redux';
+import {deleteMenu} from '../store/actions/addMenuActions';
 
-function MenuList({menus}) {
+function MenuList({menus, deleteMenu}) {
+
+    const handleDeleteMenu = (id) => {
+        deleteMenu(id)
+    }
     return (
         <div>
             {menus && menus.map(menu => {
@@ -16,10 +22,9 @@ function MenuList({menus}) {
                             <p>{menu.description}</p>
                             <div className="price-div">
                                 <p>₦{menu.price}</p>
-                                <label class="checkbox">
-                                    <input type="checkbox" />
-                                    <span></span>
-                                </label>
+                            </div>
+                            <div className="del-div">
+                                <h6 onClick={handleDeleteMenu} id={menu.id}>Delete Menu</h6>
                             </div>
                         </div>
                     </div>
@@ -29,4 +34,10 @@ function MenuList({menus}) {
     )
 }
 
-export default MenuList;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      deleteMenu: (id) => dispatch(deleteMenu(id))
+    }
+  }
+
+export default connect(null, mapDispatchToProps) (MenuList);

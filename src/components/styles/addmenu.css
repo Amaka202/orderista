@@ -13,7 +13,7 @@
    font-weight: bold;
 }
 
-.modal-form input, textarea{
+.modal-form input, textarea, select{
     width: 100%;
     border-radius: 5px;
     border: 1px solid gray;
