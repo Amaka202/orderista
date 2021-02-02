@@ -15,7 +15,7 @@ function MenuList({menus, deleteMenu}) {
                 return (
                     <div className="menu-item" key={menu.id}>
                         <div className="food-pic">
-                            <img src={rice} alt="rice"/>
+                            <img src={menu.foodPicUrl ? menu.foodPicUrl : rice} alt="rice"/>
                         </div>
                         <div className="menu-name">
                             <p>{menu.mealName}</p>

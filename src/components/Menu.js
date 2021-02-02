@@ -15,6 +15,7 @@ import MyHeader from './Header/MyHeader';
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
     const { handleSubmit, register } = useForm();
+    const [checked, setChecked] = React.useState(true);
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
     console.log(user);
@@ -30,21 +31,23 @@ function Menu(props) {
     //       return acc;
     //     }
     //   }, []);
+    const myData = [];
     
+    const handleChecked = (e, meal) => {
+        if(e.target.checked){
+            myData.push(meal)
+        }
+        console.log(myData);
+    }
 
 
 
 
     const onSubmit = data => {
-        const myData = [];
-        const handleChecked = (meal) => {
-            myData.push(meal)
-            console.log(myData);
-        }
 
         const order = {
             ...data,
-            mealArr1: filteredMeal,
+            mealArr1: myData,
             userName: user.displayName,
             userEmail: user.email,
             createdAt: new Date().toLocaleString()
@@ -59,10 +62,10 @@ function Menu(props) {
       const drink = menus && menus.filter(val => val.cathegory === "drink")
       console.log("entree", entree);
 
-      const entreeMenu = displayMenyFnx(entree, register, handleChecked);
-      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
-      const desertMenu = displayMenyFnx(desert, register, handleChecked);
-      const drinkMenu = displayMenyFnx(drink, register, handleChecked)
+      const entreeMenu = displayMenyFnx(entree, register, handleChecked, checked);
+      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked, checked);
+      const desertMenu = displayMenyFnx(desert, register, handleChecked, checked);
+      const drinkMenu = displayMenyFnx(drink, register, handleChecked, checked)
     
     return (
         <Container>
