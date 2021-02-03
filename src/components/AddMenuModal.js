@@ -1,43 +1,44 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Modal, Button, Alert} from 'rsuite';
 import { useForm } from "react-hook-form";
 import { v4 as uuid} from 'uuid';
 import {connect} from 'react-redux';
 import {addMenu} from '../store/actions/addMenuActions';
-import {upLoadFoodPic} from '../store/actions/upLoadFoodPicActions';
 import './styles/addmenu.css'
 
 
 function AddMenuModal(props) {
-    const { register, handleSubmit, errors } = useForm();
-    const {handleClose, show, addMenu, upLoadFoodPic, uploadFoodPicUrl} = props;
+    const { register, handleSubmit, errors, reset } = useForm();
+    const {handleClose, show, addMenu, time} = props;
     const picId = uuid();
     const [loading, setLoading] = useState(false);
-
-
-    const onSubmit = data => {
-      setLoading(false)
-      console.log(props);
-      console.log(uploadFoodPicUrl);
-        return new Promise((res, rej) => {
-          setTimeout(res, 5000);
-        }).then(() => {
-          console.log('im here');
-          const updatedData = {
-            ...data,
-            foodPicUrl: uploadFoodPicUrl
-          }
-          addMenu(updatedData)
-          Alert.success('Menu added successfully', 5000)
-          setLoading(false)
-        })
-    };
+    const [file, setFile] = useState("");
 
     const handleFileChange = (e) => {
-      const file = e.target.files[0];
-      upLoadFoodPic(file, picId)
+      setFile(e.target.files[0]);
     }
 
+    let fileError = null;
+
+    const onSubmit = data => {
+      console.log(file);
+      if(!file){
+        Alert.error('Please upload a meal pic', 5000)
+      }else{
+        setLoading(true)
+        addMenu(data, file, picId)
+      }
+      
+    };
+    
+    
+    useEffect(() => {
+      if(time){
+        setLoading(false)
+        reset()
+      }
+    }, [time, reset])
+    
     return (
         <div className="modal-container">
         <Modal full show={show} onHide={handleClose}>
@@ -86,6 +87,8 @@ function AddMenuModal(props) {
                         <div>
                             <label>Upload a Picture of the Meal</label>
                             <input type="file" name="mealpic" onChange={handleFileChange}/>
+                            <p>hey</p>
+                          <p className="error-text">{fileError && fileError}</p>
                         </div>
                         {/* <div>
                             <label>Upload a Picture of the Meal</label>
@@ -109,14 +112,13 @@ function AddMenuModal(props) {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    uploadFoodPicUrl: state.uploadFoodPicUrl.foodPicUrl
+    time: state.addMenu.time
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMenu: (menu) => dispatch(addMenu(menu)),
-    upLoadFoodPic: (file, id) => dispatch(upLoadFoodPic(file, id))
+    addMenu: (menu, file, id) => dispatch(addMenu(menu, file, id)),
   }
 }
 
