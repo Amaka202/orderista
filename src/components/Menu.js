@@ -38,6 +38,8 @@ function Menu(props) {
             mealArr1: myData,
             userName: user.displayName,
             userEmail: user.email,
+            userAddress: user.address,
+            userPhoneNumber: user.phone,
             createdAt: new Date().toLocaleString()
         }
         addOrder(order)

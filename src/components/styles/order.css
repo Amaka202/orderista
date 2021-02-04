@@ -3,6 +3,12 @@
     padding-bottom: 5em;
 }
 
+.order-time{
+    font-size: 1.2em;
+    color: #BFC0CD;
+
+}
+
 .order-container span{
     color: #BFC0CD;
 }

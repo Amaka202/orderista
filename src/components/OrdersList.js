@@ -8,9 +8,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import MyHeader from './Header/MyHeader';
 import {Redirect} from 'react-router-dom';
-
-
-import { Container, Header, Content, Footer, Drawer} from 'rsuite';
+import { Container, Header, Content, Footer, Divider} from 'rsuite';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
@@ -32,23 +30,23 @@ function OrdersList(props) {
                     </p>
                     <div>
                         <ul>
-                            <li>
-                                {
-                                    Object.entries(val.orderedmeal).forEach((key, index) => {
-                                        console.log(`${key} het`);
-                                    })
-                                }
-                            </li>
+                        {val.mealArr1.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    {item.mealName}
+                                    <span> ₦{item.mealPrice}</span>
+                                </li>
+                            )
+                        })}
                         </ul>
                         
                     </div>
                     <div className="user-details">
                         <p>Email Address: {val.userEmail}</p>
-                        <p>Phone Number: {val.phone ? val.phone : '081836628182'}</p>
-                        <p>Delivery Address: {val.address ? val.address : 'Federal housing Authority'}</p>
-
+                        <p>Phone Number: {val.userPhoneNumber}</p>
+                        <p>Delivery Address: {val.userAddress}</p>
                     </div>
-                    <Drawer />
+                    <Divider />
                 </div>
         )
     })

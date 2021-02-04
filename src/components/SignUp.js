@@ -17,7 +17,7 @@ function SignUp() {
         setLoading(true)
         console.log(data);
         event.preventDefault();
-        const {email, password, firstName, lastName, gender} = data;
+        const {email, password, firstName, lastName, gender, address, phone} = data;
 
         try{
             await auth.createUserWithEmailAndPassword(email, password)
@@ -28,7 +28,9 @@ function SignUp() {
                         uid: auth.user.uid,
                         email: auth.user.email,
                         displayName: firstName + " " + lastName,
-                        gender
+                        gender,
+                        address,
+                        phone
                     })
                     Alert.success('Sign Up successful', 5000)
                  if(auth.user.email === 'admin@gmail.com') {

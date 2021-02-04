@@ -1,11 +1,15 @@
 import React from 'react'
-import { Container, Header} from 'rsuite';
+import { Container, Divider, Header, Content} from 'rsuite';
 import { connect } from "react-redux";
 import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import './styles/order.css'
+import './styles/sidebar.css';
 import MyHeader from './Header/MyHeader';
 import goneShopping from './images/goneShopping.png'
+import dayjs from 'dayjs';
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
 function Cart(props) {
     const {orders, userEmail} = props;
@@ -17,6 +21,7 @@ function Cart(props) {
     const myOrder = myOrders && myOrders.map((val) => {
         return (
             <div key={val.id} className="orders-list">
+                <p className="order-time">Here is the Order you made {dayjs(val.createdAt).fromNow()}</p>
                 <div className="pref-div">
                     <p className="pref">Your Preference: </p>
                     <span>{val.preferences}</span>
@@ -33,6 +38,7 @@ function Cart(props) {
                         })}
                     </ul>
                 </div>
+                <Divider />
             </div>
         )
     })
@@ -41,24 +47,24 @@ function Cart(props) {
             <Header>
                 <MyHeader />
             </Header>
-            <Container>
-            <div className="order-container">
-                <div className="order-div">
-                <p className="page-title">Orders</p>
+
+                <div className="order-container">
+                    <div className="order-div">
+                    <p className="page-title">Orders</p>
+                        <div>
+                            <img src={goneShopping} alt="delivery bike"/>
+                        </div>
+                    
                     <div>
-                        <img src={goneShopping} alt="delivery bike"/>
+                        {myOrder}
                     </div>
-                
-                <div>
-                    {myOrder}
+                    <p className="delivery">Delivery Price: 
+                        <span> ₦2000</span>
+                    </p>                
+                    <p className="order-recieved">Order recieved, we will be intouch in less than 1 hour</p>
+                    </div>
                 </div>
-                <p className="delivery">Delivery Price: 
-                    <span> ₦2000</span>
-                </p>                
-                <p className="order-recieved">Order recieved, we will be intouch in less than 1 hour</p>
-                </div>
-            </div>
-            </Container>
+
         </Container>
     )
 }
