@@ -6,7 +6,6 @@ import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import './styles/order.css'
 import './styles/sidebar.css';
 import MyHeader from './Header/MyHeader';
-import {Redirect} from 'react-router-dom';
 import goneShopping from './images/goneShopping.png'
 import dayjs from 'dayjs';
 import CustomLoader from './CustomLoader';
@@ -14,7 +13,7 @@ var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 function Cart(props) {
-    const {orders, userEmail, auth} = props;
+    const {orders, userEmail} = props;
     
     let myOrders = orders && orders.filter(val => val.userEmail === userEmail)
 

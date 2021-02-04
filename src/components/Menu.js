@@ -11,17 +11,15 @@ import {addOrder} from '../store/actions/orderActions';
 import { Container, Header,Alert, Content, Divider, Footer, Button} from 'rsuite';
 import MyHeader from './Header/MyHeader';
 import CustomLoader from './CustomLoader';
-import {Redirect} from 'react-router-dom';
 
 
 function Menu(props) {
-    const {menus, userId, userInfo, addOrder, auth} = props;
+    const {menus, userId, userInfo, addOrder} = props;
     const history = useHistory('');
     const { handleSubmit, register } = useForm();
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
 
-    console.log(auth);
 
     let myData = [];
     
