@@ -6,15 +6,22 @@ import './styles/orderlist.css'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import MyHeader from './Header/MyHeader'
+import MyHeader from './Header/MyHeader';
+import {Redirect} from 'react-router-dom';
+
 
 import { Container, Header, Content, Footer, Drawer} from 'rsuite';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 function OrdersList(props) {
-    const {orders} = props;
+    const {orders, auth} = props;
     console.log(orders);
+
+    if(!auth.uid) return <Redirect to="/login" />
+    if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
+
+
     const orderList = orders && orders.map(val => {
         return(
                 <div className="order-item" key={val.id}>
@@ -71,6 +78,7 @@ const mapStateToProps = (state) => {
     return {
         orders: state.firestore.ordered.orders,
         menus: state.firestore.ordered.menus,
+        auth: state.firebase.auth
     }
 }
 

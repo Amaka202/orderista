@@ -1,20 +1,18 @@
 import React, {useState} from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
-import Logo from './Logo';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import { Container, Header, Content, Divider, Footer, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
-import sideBarContent from './sideBarContent'
-import currentWindowWidth from './getCurrentWindowWidth';
+import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
 import AddMenuModal from './AddMenuModal';
 import MenuList from './MenuList';
 import MyHeader from './Header/MyHeader';
+import {Redirect} from 'react-router-dom';
 
 function AddMenu(props) {
     const [show, setShow] = useState(false);
-    const {menus} = props;
+    const {menus, auth} = props;
 
     const showModal = () => {
         setShow(true)
@@ -25,7 +23,8 @@ function AddMenu(props) {
     }
 
     console.log(props);
-
+    if(!auth.uid) return <Redirect to="/login" />
+    if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
     return (
         <Container>
             <Header>
@@ -62,7 +61,8 @@ function AddMenu(props) {
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        menus: state.firestore.ordered.menus
+        menus: state.firestore.ordered.menus,
+        auth: state.firebase.auth
     }
 }
 

@@ -20,7 +20,7 @@ export const displayMenyFnx = (arr, register, handleChecked, checked) => {
                                         ref={register}
                                         name='orderedmeal'
                                         value=''
-                                        onClick={() => handleChecked({
+                                        onClick={(e) => handleChecked(e, {
                                             mealName: val.mealName,
                                             mealId: val.id,
                                             mealPrice: val.price

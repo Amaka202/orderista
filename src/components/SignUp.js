@@ -4,7 +4,6 @@ import './styles/signup.css'
 import {useHistory} from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { Button, Alert } from 'rsuite';
-// import { generateUserDocument} from '../firebase'
 import 'rsuite/dist/styles/rsuite-default.css';
 import Header1 from './Header1';
 
@@ -32,7 +31,11 @@ function SignUp() {
                         gender
                     })
                     Alert.success('Sign Up successful', 5000)
-                    history.push('/menu')  
+                 if(auth.user.email === 'admin@gmail.com') {
+                    history.push('/addmenu') 
+                 }else{
+                    history.push('/menu') 
+                 }
                 }
             })
           }

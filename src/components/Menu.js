@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import './styles/menu.css';
+import './styles/menu.css';
 // import './styles/sidebar.css';
 import { connect } from "react-redux";
 import {storage} from '../firebase';
@@ -21,23 +21,15 @@ function Menu(props) {
     console.log(user);
     console.log(props);
 
-   
-
-    // const filteredMeal = myData.reduce((acc, current) => {
-    //     const x = acc.find(item => item.mealName === current.mealName);
-    //     if (!x) {
-    //       return acc.concat([current]);
-    //     } else {
-    //       return acc;
-    //     }
-    //   }, []);
-    const myData = [];
+    let myData = [];
     
     const handleChecked = (e, meal) => {
         if(e.target.checked){
             myData.push(meal)
+        }else{
+            console.log(meal.mealName);
+            myData = myData.filter(val => val.mealName !== meal.mealName)
         }
-        console.log(myData);
     }
 
 
