@@ -41,6 +41,8 @@ function Menu(props) {
         if(data.orderedmeal.length === 0){
             Alert.error('please tick a checkbox to order', 5000)
         }else{
+            console.log(userInfo);
+            console.log(userId);
             const order = {
                 ...data,
                 mealArr1: myData,

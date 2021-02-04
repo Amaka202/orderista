@@ -30,7 +30,7 @@ function AdminHeader(props) {
 
                         </Nav.Item>
                         <Nav.Item>
-                        <Link to="/orders" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Orders</Link>
+                        <Link to="/orderslist" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Orders</Link>
                         </Nav.Item>
                         <Nav.Item>
                         <a onClick={props.signOut} href="/login" style={{color: '#f1e4e5', textDecoration: 'none', fontSize: '1.2em'}}>Log Out</a>
