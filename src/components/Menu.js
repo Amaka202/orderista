@@ -31,6 +31,8 @@ function Menu(props) {
         }
     }
 
+    console.log(user);
+
 
 
 
