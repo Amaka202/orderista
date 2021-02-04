@@ -2,19 +2,18 @@ import React from 'react'
 import { Container, Divider, Header} from 'rsuite';
 import { connect } from "react-redux";
 import {compose} from 'redux';
-import {firestoreConnect} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded, isEmpty} from 'react-redux-firebase';
 import './styles/order.css'
 import './styles/sidebar.css';
 import MyHeader from './Header/MyHeader';
 import goneShopping from './images/goneShopping.png'
 import dayjs from 'dayjs';
+import CustomLoader from './CustomLoader';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 function Cart(props) {
     const {orders, userEmail} = props;
-
-    
     
     const myOrders = orders && orders.filter(val => val.userEmail === userEmail)
     
@@ -42,19 +41,22 @@ function Cart(props) {
             </div>
         )
     })
+
+    if(!isLoaded(orders)){
+        return <CustomLoader />
+    }else{
     return (
         <Container>
             <Header>
                 <MyHeader />
             </Header>
-
                 <div className="order-container">
                     <div className="order-div">
                     <p className="page-title">Orders</p>
                         <div>
                             <img src={goneShopping} alt="delivery bike"/>
                         </div>
-                    
+                        <p>{isEmpty && "You have not made any order!"}</p>
                     <div>
                         {myOrder}
                     </div>
@@ -67,6 +69,7 @@ function Cart(props) {
 
         </Container>
     )
+}
 }
 
 function mapStateToProps(state) {

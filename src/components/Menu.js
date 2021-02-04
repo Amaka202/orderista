@@ -5,10 +5,11 @@ import './styles/menu.css';
 import { connect } from "react-redux";
 import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
-import {firestoreConnect} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {addOrder} from '../store/actions/orderActions';
 import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
 import MyHeader from './Header/MyHeader';
+import CustomLoader from './CustomLoader';
 
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
@@ -57,6 +58,11 @@ function Menu(props) {
       const desertMenu = displayMenyFnx(desert, register, handleChecked);
       const drinkMenu = displayMenyFnx(drink, register, handleChecked)
     
+    if(!isLoaded(menus))  {
+        return  <CustomLoader /> 
+    }
+
+    else{
     return (
         <Container>
             <Header>
@@ -85,6 +91,7 @@ function Menu(props) {
                     {desertMenu}
                 </div>
                 <Divider>Drinks</Divider>
+
                 <div className="menu-list">
                     {drinkMenu}
                 </div>
@@ -112,6 +119,7 @@ function Menu(props) {
             </Container>
         </Container>
     )
+}
 }
 
 function mapStateToProps(state) {

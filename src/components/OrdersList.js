@@ -3,12 +3,13 @@ import './styles/menu.css';
 import './styles/sidebar.css';
 import dayjs from 'dayjs';
 import './styles/orderlist.css'
-import {firestoreConnect} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import MyHeader from './Header/MyHeader';
 import {Redirect} from 'react-router-dom';
 import { Container, Header, Content, Footer, Divider} from 'rsuite';
+import CustomLoader from './CustomLoader';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
@@ -51,6 +52,10 @@ function OrdersList(props) {
                 </div>
         )
     })
+
+    if(!isLoaded(orders)){
+        return <CustomLoader />
+    }else{
     return (
         <Container>
             <Header>
@@ -70,6 +75,8 @@ function OrdersList(props) {
                 <Footer></Footer>
         </Container>
     )
+}
+
 }
 
 const mapStateToProps = (state) => {

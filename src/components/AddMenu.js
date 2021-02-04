@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './styles/menu.css';
 import './styles/sidebar.css';
-import {firestoreConnect} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
@@ -9,6 +9,7 @@ import AddMenuModal from './AddMenuModal';
 import MenuList from './MenuList';
 import MyHeader from './Header/MyHeader';
 import {Redirect} from 'react-router-dom';
+import CustomLoader from './CustomLoader';
 
 function AddMenu(props) {
     const [show, setShow] = useState(false);
@@ -25,6 +26,11 @@ function AddMenu(props) {
     console.log(props);
     if(!auth.uid) return <Redirect to="/login" />
     if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
+
+
+    if(!isLoaded(menus))  {
+        return  <CustomLoader /> 
+    }
     return (
         <Container>
             <Header>
