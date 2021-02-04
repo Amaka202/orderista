@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Divider, Header, Content} from 'rsuite';
+import { Container, Divider, Header} from 'rsuite';
 import { connect } from "react-redux";
 import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
