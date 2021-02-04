@@ -21,15 +21,6 @@ function Menu(props) {
 
 
    
-
-    // const filteredMeal = myData.reduce((acc, current) => {
-    //     const x = acc.find(item => item.mealName === current.mealName);
-    //     if (!x) {
-    //       return acc.concat([current]);
-    //     } else {
-    //       return acc;
-    //     }
-    //   }, []);
     const myData = [];
     
     const handleChecked = (e, meal) => {
@@ -43,13 +34,6 @@ function Menu(props) {
 
 
     const onSubmit = data => {
-<<<<<<< HEAD
-        const myData = [];
-        const handleChecked = (meal) => {
-            myData.push(meal)
-        }
-=======
->>>>>>> 8dfcdc1a2477b8984b05a374247608373de8c70f
 
         const order = {
             ...data,

@@ -17,8 +17,7 @@ function AddMenuModal(props) {
 
     const onSubmit = data => {
       setLoading(false)
-      console.log(props);
-      console.log(uploadFoodPicUrl);
+
         return new Promise((res, rej) => {
           setTimeout(res, 5000);
         }).then(() => {
