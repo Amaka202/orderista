@@ -6,6 +6,7 @@ import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import './styles/order.css'
 import './styles/sidebar.css';
 import MyHeader from './Header/MyHeader';
+import {Redirect} from 'react-router-dom';
 import goneShopping from './images/goneShopping.png'
 import dayjs from 'dayjs';
 import CustomLoader from './CustomLoader';
@@ -13,7 +14,11 @@ var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 function Cart(props) {
-    const {orders, userEmail} = props;
+    const {orders, userEmail, auth} = props;
+
+    if(!auth.uid) return <Redirect to="/login" />
+    if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
+
     
     let myOrders = orders && orders.filter(val => val.userEmail === userEmail)
 
@@ -78,7 +83,9 @@ function mapStateToProps(state) {
     return {
         orders: state.firestore.ordered.orders,
         userEmail: state.firebase.auth.email,
-        userInfo: state.firestore.ordered.users
+        userInfo: state.firestore.ordered.users,
+        auth: state.firebase.auth
+
     }
   }
 
