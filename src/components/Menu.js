@@ -23,7 +23,7 @@ function Menu(props) {
 
 
     if(!auth.uid) return <Redirect to="/login" />
-    if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
+    // if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
 
 
     let myData = [];
