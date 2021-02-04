@@ -8,7 +8,7 @@ import {compose} from 'redux';
 import {useHistory} from "react-router-dom"
 import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {addOrder} from '../store/actions/orderActions';
-import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
+import { Container, Header,Alert, Content, Divider, Footer, Button} from 'rsuite';
 import MyHeader from './Header/MyHeader';
 import CustomLoader from './CustomLoader';
 
@@ -35,19 +35,23 @@ function Menu(props) {
 
 
     const onSubmit = data => {
-
-        const order = {
-            ...data,
-            mealArr1: myData,
-            userName: user.displayName,
-            userEmail: user.email,
-            userAddress: user.address,
-            userPhoneNumber: user.phone,
-            createdAt: new Date().toLocaleString()
+        console.log(data);
+        if(data.orderedmeal.length === 0){
+            Alert.error('please tick a checkbox to order', 5000)
+        }else{
+            const order = {
+                ...data,
+                mealArr1: myData,
+                userName: user.displayName,
+                userEmail: user.email,
+                userAddress: user.address,
+                userPhoneNumber: user.phone,
+                createdAt: new Date().toLocaleString()
+            }
+            addOrder(order)
+            console.log(order);
+            history.push('/cart')
         }
-        addOrder(order)
-        console.log(order);
-        history.push('/cart')
       };
 
       const entree = menus && menus.filter(val => val.cathegory === "entree")
@@ -106,7 +110,6 @@ function Menu(props) {
                         name='preferences'
                         placeholder="Tell us about your preferences, allergies, how many plates etc. Anything we should know about your eating habit"
                     >
-
                     </textarea>
                 </div>
                 <Divider />

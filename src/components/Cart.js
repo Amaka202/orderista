@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Divider, Header} from 'rsuite';
 import { connect } from "react-redux";
 import {compose} from 'redux';
-import {firestoreConnect, isLoaded, isEmpty} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import './styles/order.css'
 import './styles/sidebar.css';
 import MyHeader from './Header/MyHeader';
@@ -58,7 +58,6 @@ function Cart(props) {
                         <div>
                             <img src={goneShopping} alt="delivery bike"/>
                         </div>
-                        <p>{isEmpty && "You have not made any order!"}</p>
                     <div>
                         {myOrder}
                     </div>

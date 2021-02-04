@@ -1,5 +1,8 @@
+.rs-modal-open .rs-modal-has-backdrop{
+    width: 20rem;
+}
+
 .modal-form{
-    
     margin: 0 auto;
 }
 

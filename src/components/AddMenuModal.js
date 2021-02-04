@@ -39,7 +39,7 @@ function AddMenuModal(props) {
     
     return (
         <div className="modal-container">
-        <Modal full show={show} onHide={handleClose}>
+        <Modal full show={show} onHide={handleClose} size='sm'>
           <Modal.Header>
             <Modal.Title>Add Menu</Modal.Title>
           </Modal.Header>
