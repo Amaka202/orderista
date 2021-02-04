@@ -5,6 +5,7 @@ import './styles/menu.css';
 import { connect } from "react-redux";
 import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
+import {useHistory} from "react-router-dom"
 import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {addOrder} from '../store/actions/orderActions';
 import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
@@ -13,6 +14,7 @@ import CustomLoader from './CustomLoader';
 
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
+    const history = useHistory('');
     const { handleSubmit, register } = useForm();
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
@@ -45,6 +47,7 @@ function Menu(props) {
         }
         addOrder(order)
         console.log(order);
+        history.push('/cart')
       };
 
       const entree = menus && menus.filter(val => val.cathegory === "entree")

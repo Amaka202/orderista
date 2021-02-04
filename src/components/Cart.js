@@ -15,8 +15,10 @@ dayjs.extend(relativeTime)
 function Cart(props) {
     const {orders, userEmail} = props;
     
-    const myOrders = orders && orders.filter(val => val.userEmail === userEmail)
-    
+    let myOrders = orders && orders.filter(val => val.userEmail === userEmail)
+
+    myOrders = myOrders && myOrders.slice().sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
+
     const myOrder = myOrders && myOrders.map((val) => {
         return (
             <div key={val.id} className="orders-list">

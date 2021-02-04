@@ -4,7 +4,7 @@ import { Loader } from 'rsuite';
 function CustomLoader() {
     return (
         <div>
-            <Loader size="lg" speed="fast" center content="loading..." vertical/>
+            <Loader size="lg" speed="fast" center content="" vertical/>
         </div>
     )
 }
