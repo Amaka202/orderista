@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import './styles/menu.css';
 // import './styles/sidebar.css';
 import { connect } from "react-redux";
-import {storage} from '../firebase';
-import rice from './images/rice.jpg'
 import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
@@ -15,7 +13,6 @@ import MyHeader from './Header/MyHeader';
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
     const { handleSubmit, register } = useForm();
-    const [checked, setChecked] = React.useState(true);
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
     console.log(user);
@@ -27,7 +24,6 @@ function Menu(props) {
         if(e.target.checked){
             myData.push(meal)
         }else{
-            console.log(meal.mealName);
             myData = myData.filter(val => val.mealName !== meal.mealName)
         }
     }
@@ -54,10 +50,10 @@ function Menu(props) {
       const drink = menus && menus.filter(val => val.cathegory === "drink")
       console.log("entree", entree);
 
-      const entreeMenu = displayMenyFnx(entree, register, handleChecked, checked);
-      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked, checked);
-      const desertMenu = displayMenyFnx(desert, register, handleChecked, checked);
-      const drinkMenu = displayMenyFnx(drink, register, handleChecked, checked)
+      const entreeMenu = displayMenyFnx(entree, register, handleChecked);
+      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
+      const desertMenu = displayMenyFnx(desert, register, handleChecked);
+      const drinkMenu = displayMenyFnx(drink, register, handleChecked)
     
     return (
         <Container>

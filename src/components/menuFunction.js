@@ -3,7 +3,7 @@ import rice from './images/rice.jpg'
 
 
 
-export const displayMenyFnx = (arr, register, handleChecked, checked) => {
+export const displayMenyFnx = (arr, register, handleChecked) => {
     return  arr && arr.map(val => {
         return (
             <div className="menu-item" key={val.id}>

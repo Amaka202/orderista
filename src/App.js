@@ -36,6 +36,7 @@ export default function App() {
         <Route path="/order/:id" component={OrderDetail} />
         <Route path="/orderslist" component={OrdersList} />
         <Route path="/addmenu" component={AddMenu} />
+        <Route path="/cart" component={Cart} />
       </Switch>
       </Suspense>
     </div>

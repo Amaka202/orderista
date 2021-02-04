@@ -1,4 +1,66 @@
-.orders-flexed{
+.order-container{
+    margin: auto;
+    padding-bottom: 5em;
+}
+
+.order-container span{
+    color: #BFC0CD;
+}
+
+.order-div img{
+    height: 30em;
+}
+
+.page-title{
+    margin: 1em 0;
+    color: #BFC0CD;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.pref-div{
+    margin: 2rem 0;
+}
+
+.pref, .delivery{
+    color: #272B2F;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.food-div{
+    margin-bottom: 2rem;
+}
+
+.food-div ul li{
+        margin: 0;
+        padding: 0 2rem;
+        list-style: none;
+        background-image: url("../images//46170001-fork-and-spoon-and-empty-plate.jpg");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 20px;
+    }
+
+.order-recieved{
+    margin-top: 2rem;
+    color: #ED5358;
+    font-style: italic;
+}
+@media only screen and (max-width: 700px){
+    .order-container{
+        /* padding: 3% 5%; */
+    }
+
+    .order-div img{
+        height: 15em;
+    }
+}
+
+
+
+
+/* .orders-flexed{
     display: flex;
 }
 
@@ -7,7 +69,6 @@
 }
 
 .order-div{
-    /* text-align: center; */
 }
 
 .order-div img{
@@ -62,4 +123,4 @@
     font-style: italic;
 }
 
-
+ */

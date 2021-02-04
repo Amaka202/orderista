@@ -18,8 +18,6 @@ function AddMenuModal(props) {
       setFile(e.target.files[0]);
     }
 
-    let fileError = null;
-
     const onSubmit = data => {
       console.log(file);
       if(!file){
@@ -87,9 +85,7 @@ function AddMenuModal(props) {
                         <div>
                             <label>Upload a Picture of the Meal</label>
                             <input type="file" name="mealpic" onChange={handleFileChange}/>
-                            <p>hey</p>
-                          <p className="error-text">{fileError && fileError}</p>
-                        </div>
+                          </div>
                         {/* <div>
                             <label>Upload a Picture of the Meal</label>
                             <input ref={register} type="file" name="mealpic" />

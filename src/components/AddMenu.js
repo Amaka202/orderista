@@ -37,7 +37,7 @@ function AddMenu(props) {
                 <div className="menu-title">
                     <h3>Added menus</h3>
                 </div>
-                <div className="menu-list">
+                <div className="menu-ordered-list">
                     <MenuList menus={menus}/>
                 </div>
                 <Divider />
