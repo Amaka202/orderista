@@ -28,19 +28,14 @@ function Login() {
             await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             await auth.signInWithEmailAndPassword(email, password)
             .then((auth) => {
-                Alert.success('Welcome back!', 5000)
-                history.push('/menu')  
+                if(auth.user.email === 'admin@gmail.com') {
+                    Alert.success('Welcome back!', 5000)
+                    history.push('/addmenu') 
+                 }else{
+                    Alert.success('Welcome back!', 5000)
+                    history.push('/menu') 
+                 }
                 })
-
-            // auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            // .then(() => {
-            //   return (
-            //     firebase.auth().signInWithEmailAndPassword(email, password),
-            //     Alert.success('Welcome back!', 5000),
-            //     history.push('/menu')
-            //   )
-                
-            // })
           }
           catch(e){     
               Alert.error(e.message === 'The password is invalid or the user does not have a password.' ? 'Invalid password' : 'Invalid login details', 5000)

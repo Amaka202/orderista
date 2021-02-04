@@ -1,5 +1,16 @@
+.rs-modal-open .rs-modal-has-backdrop{
+    width: 20rem;
+}
+
+.modal-drawer .rs-drawer-content {
+    background-color: white;
+}
+
+.error-text-draw{
+    color: white;
+}
+
 .modal-form{
-    
     margin: 0 auto;
 }
 

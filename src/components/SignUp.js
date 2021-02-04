@@ -4,7 +4,6 @@ import './styles/signup.css'
 import {useHistory} from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { Button, Alert } from 'rsuite';
-// import { generateUserDocument} from '../firebase'
 import 'rsuite/dist/styles/rsuite-default.css';
 import Header1 from './Header1';
 
@@ -18,7 +17,7 @@ function SignUp() {
         setLoading(true)
         console.log(data);
         event.preventDefault();
-        const {email, password, firstName, lastName, gender} = data;
+        const {email, password, firstName, lastName, gender, address, phone} = data;
 
         try{
             await auth.createUserWithEmailAndPassword(email, password)
@@ -29,10 +28,16 @@ function SignUp() {
                         uid: auth.user.uid,
                         email: auth.user.email,
                         displayName: firstName + " " + lastName,
-                        gender
+                        gender,
+                        address,
+                        phone
                     })
                     Alert.success('Sign Up successful', 5000)
-                    history.push('/menu')  
+                 if(auth.user.email === 'admin@gmail.com') {
+                    history.push('/addmenu') 
+                 }else{
+                    history.push('/menu') 
+                 }
                 }
             })
           }

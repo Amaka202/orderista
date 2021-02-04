@@ -1,48 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-// import './styles/menu.css';
+import './styles/menu.css';
 // import './styles/sidebar.css';
 import { connect } from "react-redux";
-import {storage} from '../firebase';
-import rice from './images/rice.jpg'
 import {displayMenyFnx} from './menuFunction';
 import {compose} from 'redux';
-import {firestoreConnect} from 'react-redux-firebase';
+import {useHistory} from "react-router-dom"
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import {addOrder} from '../store/actions/orderActions';
-import { Container, Header, Content, Divider, Footer, Button} from 'rsuite';
+import { Container, Header,Alert, Content, Divider, Footer, Button} from 'rsuite';
 import MyHeader from './Header/MyHeader';
+import CustomLoader from './CustomLoader';
 
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
+    const history = useHistory('');
     const { handleSubmit, register } = useForm();
-    const [checked, setChecked] = React.useState(true);
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
 
-
-   
-    const myData = [];
+    let myData = [];
     
     const handleChecked = (e, meal) => {
         if(e.target.checked){
             myData.push(meal)
+        }else{
+            myData = myData.filter(val => val.mealName !== meal.mealName)
         }
-        console.log(myData);
     }
 
 
 
 
     const onSubmit = data => {
-
-        const order = {
-            ...data,
-            mealArr1: myData,
-            userName: user.displayName,
-            userEmail: user.email,
-            createdAt: new Date().toLocaleString()
+        console.log(data);
+        if(data.orderedmeal.length === 0){
+            Alert.error('please tick a checkbox to order', 5000)
+        }else{
+            const order = {
+                ...data,
+                mealArr1: myData,
+                userName: user.displayName,
+                userEmail: user.email,
+                userAddress: user.address,
+                userPhoneNumber: user.phone,
+                createdAt: new Date().toLocaleString()
+            }
+            addOrder(order)
+            console.log(order);
+            history.push('/cart')
         }
-        addOrder(order)
       };
 
       const entree = menus && menus.filter(val => val.cathegory === "entree")
@@ -50,11 +57,16 @@ function Menu(props) {
       const desert = menus && menus.filter(val => val.cathegory === "desert")
       const drink = menus && menus.filter(val => val.cathegory === "drink")
 
-      const entreeMenu = displayMenyFnx(entree, register, handleChecked, checked);
-      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked, checked);
-      const desertMenu = displayMenyFnx(desert, register, handleChecked, checked);
-      const drinkMenu = displayMenyFnx(drink, register, handleChecked, checked)
+      const entreeMenu = displayMenyFnx(entree, register, handleChecked);
+      const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
+      const desertMenu = displayMenyFnx(desert, register, handleChecked);
+      const drinkMenu = displayMenyFnx(drink, register, handleChecked)
     
+    if(!isLoaded(menus))  {
+        return  <CustomLoader /> 
+    }
+
+    else{
     return (
         <Container>
             <Header>
@@ -83,6 +95,7 @@ function Menu(props) {
                     {desertMenu}
                 </div>
                 <Divider>Drinks</Divider>
+
                 <div className="menu-list">
                     {drinkMenu}
                 </div>
@@ -94,7 +107,6 @@ function Menu(props) {
                         name='preferences'
                         placeholder="Tell us about your preferences, allergies, how many plates etc. Anything we should know about your eating habit"
                     >
-
                     </textarea>
                 </div>
                 <Divider />
@@ -110,6 +122,7 @@ function Menu(props) {
             </Container>
         </Container>
     )
+}
 }
 
 function mapStateToProps(state) {

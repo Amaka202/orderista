@@ -9,6 +9,8 @@ function MenuList({menus, deleteMenu}) {
     const handleDeleteMenu = (id) => {
         deleteMenu(id)
     }
+    menus = menus && menus.slice().sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
+
     return (
         <div>
             {menus && menus.map(menu => {

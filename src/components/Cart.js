@@ -1,77 +1,91 @@
-import React, {useState} from 'react'
-import Logo from './Logo'
-import { Container, Sidebar, Button, Drawer, IconButton, Icon} from 'rsuite';
-import sideBarContent from './sideBarContent'
-import currentWindowWidth from './getCurrentWindowWidth';
+import React from 'react'
+import { Container, Divider, Header} from 'rsuite';
+import { connect } from "react-redux";
+import {compose} from 'redux';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
 import './styles/order.css'
+import './styles/sidebar.css';
+import MyHeader from './Header/MyHeader';
 import goneShopping from './images/goneShopping.png'
+import dayjs from 'dayjs';
+import CustomLoader from './CustomLoader';
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
-function Orders() {
-    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
+function Cart(props) {
+    const {orders, userEmail} = props;
+    
+    let myOrders = orders && orders.filter(val => val.userEmail === userEmail)
+
+    myOrders = myOrders && myOrders.slice().sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
+
+    const myOrder = myOrders && myOrders.map((val) => {
+        return (
+            <div key={val.id} className="orders-list">
+                <p className="order-time">Here is the Order you made {dayjs(val.createdAt).fromNow()}</p>
+                <div className="pref-div">
+                    <p className="pref">Your Preference: </p>
+                    <span>{val.preferences}</span>
+                </div>
+                <div className="food-div">
+                    <ul>
+                        {val.mealArr1.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    {item.mealName}
+                                    <span> ₦{item.mealPrice}</span>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                <Divider />
+            </div>
+        )
+    })
+
+    if(!isLoaded(orders)){
+        return <CustomLoader />
+    }else{
     return (
         <Container>
-            {currentWindowWidth()[0] > 700 
-                ?
-                <Sidebar className="sidebar">
-                    {sideBarContent()}
-                </Sidebar>
-                :
-                <>
-                <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
-
-                <Drawer
-                    size={'xs'}
-                    placement={'left'}
-                    show={openMobileDrawer}
-                    className="drawer"
-                    onHide={() => setOpenMobileDrawer(false)}>
-                     <Drawer.Body className="drawer-body">
-                     {sideBarContent()}     
-                    </Drawer.Body> 
-                    <Drawer.Footer className="menu-btn">
-                        <Button style={{ width: '100%', color:'white' }} onClick={() => setOpenMobileDrawer(false)}>Close</Button>
-                    </Drawer.Footer>  
-                </Drawer>
-                </>
-            }
-            <Container>
-            <div className="order-container">
-                <Logo />
-                <div className="order-div">
+            <Header>
+                <MyHeader />
+            </Header>
+                <div className="order-container">
+                    <div className="order-div">
+                    <p className="page-title">Orders</p>
+                        <div>
+                            <img src={goneShopping} alt="delivery bike"/>
+                        </div>
                     <div>
-                        <img src={goneShopping} alt="delivery bike"/>
+                        {myOrder}
                     </div>
-                <p>My Order</p>
-                <ul>
-                    <li>
-                        Rice and Chicken
+                    <p className="delivery">Delivery Price: 
                         <span> ₦2000</span>
-                    </li>
-                    <li>
-                        Rice and Chicken
-                        <span> ₦2000</span>
-                    </li>
-                    <li>
-                        Rice and Chicken
-                        <span> ₦2000</span>
-                    </li>
-                    <li>
-                        Rice and Chicken
-                        <span> ₦2000</span>
-                    </li>
-                </ul>
-                <p>Delivery Price: 
-                    <span> ₦2000</span>
-                </p>
-                <p>Total Price:
-                    <span> ₦20, 000</span>
-                </p>
-                <p>Order recieved, we will be intouch in less than 1 hour</p>
+                    </p>                
+                    <p className="order-recieved">Order recieved, we will be intouch in less than 1 hour</p>
+                    </div>
                 </div>
-            </div>
-            </Container>
+
         </Container>
     )
 }
+}
 
-export default Orders
+function mapStateToProps(state) {
+    console.log(state);
+    return {
+        orders: state.firestore.ordered.orders,
+        userEmail: state.firebase.auth.email,
+        userInfo: state.firestore.ordered.users
+    }
+  }
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'orders'},
+        {collection: 'users'}
+    ])
+) (Cart);
