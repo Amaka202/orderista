@@ -21,10 +21,7 @@ function Menu(props) {
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
 
-
-    if(!auth.uid) return <Redirect to="/login" />
-    // if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
-
+    console.log(auth);
 
     let myData = [];
     
@@ -54,7 +51,6 @@ function Menu(props) {
                 createdAt: new Date().toLocaleString()
             }
             addOrder(order)
-            console.log(order);
             history.push('/cart')
         }
       };

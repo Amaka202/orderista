@@ -15,10 +15,6 @@ dayjs.extend(relativeTime)
 
 function Cart(props) {
     const {orders, userEmail, auth} = props;
-
-    if(!auth.uid) return <Redirect to="/login" />
-    if(auth.uid && auth.email !== 'admin@gmail.com') return <Redirect to="/menu" />
-
     
     let myOrders = orders && orders.filter(val => val.userEmail === userEmail)
 
@@ -30,7 +26,7 @@ function Cart(props) {
                 <p className="order-time">Here is the Order you made {dayjs(val.createdAt).fromNow()}</p>
                 <div className="pref-div">
                     <p className="pref">Your Preference: </p>
-                    <span>{val.preferences}</span>
+                    <span>{val.preferences === "" ? "No preferences chosen" : val.preferences}</span>
                 </div>
                 <div className="food-div">
                     <ul>

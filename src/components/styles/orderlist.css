@@ -7,11 +7,6 @@
 }
 
 
-
-.orderlist-write-up h4{
-    /* color: black; */
-}
-
 .order-list{
     display: flex;
     justify-content: space-between;
