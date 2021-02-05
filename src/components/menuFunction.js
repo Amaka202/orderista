@@ -14,7 +14,7 @@ export const displayMenyFnx = (arr, register, handleChecked) => {
                             <p>{val.mealName}</p>
                             <p>{val.description}</p>
                             <div className="price-div">
-                                <p>{val.price}</p>
+                                <p>₦{val.price}</p>
                                 <label class="checkbox">
                                     <input type="checkbox" 
                                         ref={register}
