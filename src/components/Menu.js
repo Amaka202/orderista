@@ -12,14 +12,14 @@ import { Container, Header,Alert, Content, Divider, Footer, Button} from 'rsuite
 import MyHeader from './Header/MyHeader';
 import CustomLoader from './CustomLoader';
 
+
 function Menu(props) {
     const {menus, userId, userInfo, addOrder} = props;
     const history = useHistory('');
     const { handleSubmit, register } = useForm();
     let user = userInfo && userInfo.filter(val => userId === val.id)
     user = user && user[0];
-    console.log(user);
-    console.log(props);
+
 
     let myData = [];
     
@@ -31,6 +31,8 @@ function Menu(props) {
         }
     }
 
+    console.log(user);
+
 
 
 
@@ -39,6 +41,8 @@ function Menu(props) {
         if(data.orderedmeal.length === 0){
             Alert.error('please tick a checkbox to order', 5000)
         }else{
+            console.log(userInfo);
+            console.log(userId);
             const order = {
                 ...data,
                 mealArr1: myData,
@@ -49,7 +53,6 @@ function Menu(props) {
                 createdAt: new Date().toLocaleString()
             }
             addOrder(order)
-            console.log(order);
             history.push('/cart')
         }
       };
@@ -58,7 +61,6 @@ function Menu(props) {
       const appetizer = menus && menus.filter(val => val.cathegory === "appetizer")
       const desert = menus && menus.filter(val => val.cathegory === "desert")
       const drink = menus && menus.filter(val => val.cathegory === "drink")
-      console.log("entree", entree);
 
       const entreeMenu = displayMenyFnx(entree, register, handleChecked);
       const appetizerMenu = displayMenyFnx(appetizer, register, handleChecked);
@@ -129,11 +131,11 @@ function Menu(props) {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         menus: state.firestore.ordered.menus,
         userId: state.firebase.auth.uid,
-        userInfo: state.firestore.ordered.users
+        userInfo: state.firestore.ordered.users,
+        auth: state.firebase.auth
     }
   }
 

@@ -25,7 +25,7 @@ function Cart(props) {
                 <p className="order-time">Here is the Order you made {dayjs(val.createdAt).fromNow()}</p>
                 <div className="pref-div">
                     <p className="pref">Your Preference: </p>
-                    <span>{val.preferences}</span>
+                    <span>{val.preferences === "" ? "No preferences chosen" : val.preferences}</span>
                 </div>
                 <div className="food-div">
                     <ul>
@@ -78,7 +78,9 @@ function mapStateToProps(state) {
     return {
         orders: state.firestore.ordered.orders,
         userEmail: state.firebase.auth.email,
-        userInfo: state.firestore.ordered.users
+        userInfo: state.firestore.ordered.users,
+        auth: state.firebase.auth
+
     }
   }
 

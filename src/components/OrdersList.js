@@ -44,6 +44,7 @@ function OrdersList(props) {
                         
                     </div>
                     <div className="user-details">
+                        <p>Their preferences: {val.preferences}</p>
                         <p>Email Address: {val.userEmail}</p>
                         <p>Phone Number: {val.userPhoneNumber}</p>
                         <p>Delivery Address: {val.userAddress}</p>

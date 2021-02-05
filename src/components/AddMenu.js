@@ -65,7 +65,6 @@ function AddMenu(props) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         menus: state.firestore.ordered.menus,
         auth: state.firebase.auth

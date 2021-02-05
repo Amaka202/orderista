@@ -7,11 +7,6 @@
 }
 
 
-
-.orderlist-write-up h4{
-    /* color: black; */
-}
-
 .order-list{
     display: flex;
     justify-content: space-between;
@@ -27,6 +22,7 @@
 .user-name{
     font-size: 1.2em;
     font-weight: bold;
+    color: #EC5358;
 }
 
 .order-time{
