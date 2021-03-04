@@ -8,6 +8,7 @@ export const signIn = (cred) => {
         ).then(() => {
             dispatch({type: 'LOGIN_SUCCESS'})
         }).catch(() => {
+       
             dispatch({type: 'LOGIN_ERROR'})
         })
     }
